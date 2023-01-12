@@ -22,9 +22,14 @@
     "ts-node": "^8.9.0",
     "typescript": "^4.5.4"
   },
+  "homepage": "https://github.com/tomasbjerre/bitbucket-server-utils-cli",
+  "repository": "git@github.com:tomasbjerre/bitbucket-server-utils-cli.git",
   "files": [
     "lib"
   ],
   "author": "Firstname Lastname",
+  "keywords": [
+    "bitbucket-server"
+  ],
   "license": "Apache 2"
 }
