@@ -1,0 +1,147 @@
+{
+  "id": 128,
+  "version": 7,
+  "title": "fixing stuff",
+  "description": "sdfsdfsdfsdf",
+  "state": "OPEN",
+  "open": true,
+  "closed": false,
+  "createdDate": 1671701939747,
+  "updatedDate": 1673340959000,
+  "fromRef": {
+    "id": "refs/heads/asdasdasd",
+    "displayId": "asdasdasd",
+    "latestCommit": "4234234234234234",
+    "type": "BRANCH",
+    "repository": {
+      "slug": "repo_1",
+      "id": 1218,
+      "name": "repo_1",
+      "hierarchyId": "b3901ecb",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+        "key": "PROJ_1",
+        "id": 2132,
+        "name": "PROJ_1",
+        "description": "sdfsdf sdf sdfsd sdfsdfsdf",
+        "public": false,
+        "type": "NORMAL",
+        "links": {
+          "self": [{ "href": "https://bitbucket-server/projects/PROJ_1" }]
+        }
+      },
+      "public": false,
+      "links": {
+        "clone": [
+          {
+            "href": "ssh://git@bitbucket-server:8080/ea/repo_1.git",
+            "name": "ssh"
+          },
+          {
+            "href": "https://bitbucket-server/scm/ea/repo_1.git",
+            "name": "http"
+          }
+        ],
+        "self": [
+          {
+            "href": "https://bitbucket-server/projects/PROJ_1/repos/repo_1/browse"
+          }
+        ]
+      }
+    }
+  },
+  "toRef": {
+    "id": "refs/heads/master",
+    "displayId": "master",
+    "latestCommit": "asdasdasdasdasd",
+    "type": "BRANCH",
+    "repository": {
+      "slug": "repo_1",
+      "id": 1218,
+      "name": "repo_1",
+      "hierarchyId": "fgdfgdfgdfgfdg",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+        "key": "PROJ_1",
+        "id": 2132,
+        "name": "PROJ_1",
+        "description": "sdfsdf sdf sdfsd sdfsdfsdf",
+        "public": false,
+        "type": "NORMAL",
+        "links": {
+          "self": [{ "href": "https://bitbucket-server/projects/PROJ_1" }]
+        }
+      },
+      "public": false,
+      "links": {
+        "clone": [
+          {
+            "href": "ssh://git@bitbucket-server:8080/ea/repo_1.git",
+            "name": "ssh"
+          },
+          {
+            "href": "https://bitbucket-server/scm/ea/repo_1.git",
+            "name": "http"
+          }
+        ],
+        "self": [
+          {
+            "href": "https://bitbucket-server/projects/PROJ_1/repos/repo_1/browse"
+          }
+        ]
+      }
+    }
+  },
+  "locked": false,
+  "author": {
+    "user": {
+      "name": "345341",
+      "emailAddress": "mmmmm@mycompany",
+      "id": 12854,
+      "displayName": "m m m m m",
+      "active": true,
+      "slug": "345341",
+      "type": "NORMAL",
+      "links": {
+        "self": [{ "href": "https://bitbucket-server/users/345341" }]
+      }
+    },
+    "role": "AUTHOR",
+    "approved": false,
+    "status": "UNAPPROVED"
+  },
+  "reviewers": [
+    {
+      "user": {
+        "name": "123123123",
+        "emailAddress": "firstname.lastname@mycompany",
+        "id": 4792,
+        "displayName": "Firstname Lastname",
+        "active": true,
+        "slug": "123123123",
+        "type": "NORMAL",
+        "links": {
+          "self": [{ "href": "https://bitbucket-server/users/123123123" }]
+        }
+      },
+      "lastReviewedCommit": "345345345345112367567567567",
+      "role": "REVIEWER",
+      "approved": true,
+      "status": "APPROVED"
+    }
+  ],
+  "participants": [],
+  "links": {
+    "self": [
+      {
+        "href": "https://bitbucket-server/projects/PROJ_1/repos/repo_1/pull-requests/128"
+      }
+    ]
+  }
+}

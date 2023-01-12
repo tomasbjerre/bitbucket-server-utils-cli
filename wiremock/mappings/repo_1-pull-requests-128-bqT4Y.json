@@ -1,0 +1,12 @@
+{
+  "id": "6e22052f-2d4f-3563-9ed9-10969c063f3b",
+  "request": {
+    "url": "/rest/api/latest/projects/PROJ_1/repos/repo_1/pull-requests/128",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "repo_1-pull-requests-128-bqT4Y.json"
+  },
+  "uuid": "6e22052f-2d4f-3563-9ed9-10969c063f3b"
+}

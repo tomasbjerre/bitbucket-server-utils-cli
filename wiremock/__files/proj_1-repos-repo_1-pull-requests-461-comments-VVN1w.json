@@ -1,0 +1,27 @@
+{
+  "properties": { "repositoryId": 12323 },
+  "id": 234234,
+  "version": 0,
+  "text": "blocker comment\n\nmy-comment-key",
+  "author": {
+    "name": "sdfsdfsdf",
+    "emailAddress": "asdasdasd.asdasdasd@mycompany",
+    "id": 4792,
+    "displayName": "ADasd Aasdasd",
+    "active": true,
+    "slug": "435345345",
+    "type": "NORMAL",
+    "links": { "self": [{ "href": "https://asd.asd.asd/users/435345345" }] }
+  },
+  "createdDate": 1673557402145,
+  "updatedDate": 1673557402145,
+  "comments": [],
+  "tasks": [],
+  "severity": "BLOCKER",
+  "state": "OPEN",
+  "permittedOperations": {
+    "editable": true,
+    "transitionable": true,
+    "deletable": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "381e28a2-1bda-3672-8576-82b0a354b5bb",
+  "request": {
+    "url": "/rest/api/latest/projects/PROJ_1/repos/repo_1/pull-requests?limit=9999",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "repo_1-pull-requests-xlnSY.json"
+  },
+  "uuid": "381e28a2-1bda-3672-8576-82b0a354b5bb"
+}

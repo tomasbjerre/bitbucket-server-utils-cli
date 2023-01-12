@@ -1,0 +1,12 @@
+{
+  "id": "655dcb2e-d5c2-35ca-a90e-ed10259e46f1",
+  "request": {
+    "url": "/rest/api/latest/projects/PROJ_1/repos/repo_1/pull-requests/461/comments",
+    "method": "POST"
+  },
+  "response": {
+    "status": 201,
+    "bodyFileName": "proj_1-repos-repo_1-pull-requests-461-comments-VVN1w.json"
+  },
+  "uuid": "655dcb2e-d5c2-35ca-a90e-ed10259e46f1"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "24cd7376-dfac-320e-a062-6b7c8de32ef5",
+  "request": {
+    "url": "/rest/api/latest/projects/PROJ_1/repos/repo_1?limit=9999",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "proj_1-repos-repo_1-pgGNy.json"
+  },
+  "uuid": "24cd7376-dfac-320e-a062-6b7c8de32ef5"
+}

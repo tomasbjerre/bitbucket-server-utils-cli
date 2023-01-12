@@ -1,0 +1,12 @@
+{
+  "id": "26d981f2-a6b6-3abd-ad54-da9628d1d150",
+  "request": {
+    "url": "/rest/api/latest/projects/PROJ_1/repos?limit=9999",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "proj_1-repos-Kgqhq.json"
+  },
+  "uuid": "26d981f2-a6b6-3abd-ad54-da9628d1d150"
+}

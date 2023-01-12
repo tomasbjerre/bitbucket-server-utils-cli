@@ -1,0 +1,39 @@
+{
+  "slug": "repo_1",
+  "id": 5088,
+  "name": "repo_1",
+  "hierarchyId": "sdfsdfsdf",
+  "scmId": "git",
+  "state": "AVAILABLE",
+  "statusMessage": "Available",
+  "forkable": true,
+  "project": {
+    "key": "PROJ_1",
+    "id": 547,
+    "name": "PROJECT 1",
+    "description": "asdasd",
+    "public": false,
+    "type": "NORMAL",
+    "links": {
+      "self": [{ "href": "https://bitbucket-server/projects/PROJ_1" }]
+    }
+  },
+  "public": false,
+  "links": {
+    "clone": [
+      {
+        "href": "https://bitbucket-server/scm/PROJ_1/repo_1.git",
+        "name": "http"
+      },
+      {
+        "href": "ssh://git@bitbucket-server:8080/PROJ_1/repo_1.git",
+        "name": "ssh"
+      }
+    ],
+    "self": [
+      {
+        "href": "https://bitbucket-server/projects/PROJ_1/repos/repo_1/browse"
+      }
+    ]
+  }
+}

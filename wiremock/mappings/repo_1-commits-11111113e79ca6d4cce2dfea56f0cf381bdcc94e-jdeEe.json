@@ -1,0 +1,12 @@
+{
+  "id": "f217bdad-167d-31ae-8faa-7996158104d2",
+  "request": {
+    "url": "/rest/api/latest/projects/PROJ_1/repos/repo_1/commits/11111113e79ca6d4cce2dfea56f0cf381bdcc94e",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "repo_1-commits-11111113e79ca6d4cce2dfea56f0cf381bdcc94e-jdeEe.json"
+  },
+  "uuid": "f217bdad-167d-31ae-8faa-7996158104d2"
+}

@@ -1,0 +1,143 @@
+{
+  "size": 17,
+  "limit": 500,
+  "isLastPage": true,
+  "values": [
+    {
+      "id": 2485184,
+      "createdDate": 1673453097223,
+      "user": {
+        "name": "xasdasd",
+        "emailAddress": "gfhfghfghfgh@mycompany",
+        "id": 2812,
+        "displayName": "dfgdf dfgdfgdfg",
+        "active": true,
+        "slug": "xasdasd",
+        "type": "NORMAL",
+        "links": {
+          "self": [{ "href": "https://asd.asd.asd/users/xasdasd" }]
+        }
+      },
+      "action": "COMMENTED",
+      "commentAction": "ADDED",
+      "comment": {
+        "properties": { "repositoryId": 3268 },
+        "id": 397937,
+        "version": 0,
+        "text": "\nasasda asdasdads",
+        "author": {
+          "name": "xasdasd",
+          "emailAddress": "gfhfghfghfgh@mycompany",
+          "id": 2812,
+          "displayName": "dfgdf dfgdfgdfg",
+          "active": true,
+          "slug": "xasdasd",
+          "type": "NORMAL",
+          "links": {
+            "self": [{ "href": "https://asd.asd.asd/users/xasdasd" }]
+          }
+        },
+        "createdDate": 1673453097217,
+        "updatedDate": 1673453097217,
+        "comments": [],
+        "tasks": [],
+        "severity": "NORMAL",
+        "state": "OPEN",
+        "permittedOperations": {
+          "editable": false,
+          "transitionable": true,
+          "deletable": false
+        }
+      },
+      "commentAnchor": {
+        "fromHash": "fgdfggfhhgfjghjgsdgsdfsdfsdf",
+        "toHash": "asdgdfgdghfghjfghjghsdfdfsf",
+        "line": 2,
+        "lineType": "ADDED",
+        "fileType": "TO",
+        "path": "some/file.sh",
+        "diffType": "EFFECTIVE",
+        "orphaned": false
+      },
+      "diff": {
+        "source": null,
+        "destination": {
+          "components": ["src", "asdasd", "ffghfgh", "ASDasdasd.x"],
+          "parent": "src/asdasd/ffghfgh",
+          "name": "ASDasdasd.x",
+          "extension": "vue",
+          "toString": "some/file.sh"
+        },
+        "hunks": [
+          {
+            "sourceLine": 1,
+            "sourceSpan": 9,
+            "destinationLine": 1,
+            "destinationSpan": 12,
+            "segments": [
+              {
+                "type": "CONTEXT",
+                "lines": [
+                  {
+                    "destination": 1,
+                    "source": 1,
+                    "line": "asdasdasd",
+                    "truncated": false
+                  }
+                ],
+                "truncated": false
+              },
+              {
+                "type": "REMOVED",
+                "lines": [
+                  {
+                    "destination": 2,
+                    "source": 2,
+                    "line": "   asdasdasd",
+                    "truncated": false
+                  }
+                ],
+                "truncated": false
+              },
+              {
+                "type": "ADDED",
+                "lines": [
+                  {
+                    "destination": 4,
+                    "source": 10,
+                    "line": "        asdasdasdasd",
+                    "truncated": false
+                  }
+                ],
+                "truncated": false
+              }
+            ],
+            "truncated": false
+          }
+        ],
+        "truncated": false,
+        "properties": {
+          "toHash": "asdgdfgdghfghjfghjghsdfdfsf",
+          "current": true,
+          "fromHash": "fgdfggfhhgfjghjgsdgsdfsdfsdf"
+        }
+      }
+    },
+    {
+      "id": 2484656,
+      "createdDate": 1673446971657,
+      "user": {
+        "name": "66128244",
+        "emailAddress": "tomas.bjerre@mycompany",
+        "id": 4792,
+        "displayName": "Tomas Bjerre",
+        "active": true,
+        "slug": "66128244",
+        "type": "NORMAL",
+        "links": { "self": [{ "href": "https://asd.asd.asd/users/66128244" }] }
+      },
+      "action": "OPENED"
+    }
+  ],
+  "start": 0
+}

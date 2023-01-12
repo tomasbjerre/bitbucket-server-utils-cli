@@ -1,0 +1,24 @@
+{
+  "size": 2,
+  "limit": 1000,
+  "isLastPage": true,
+  "values": [
+    {
+      "id": "refs/heads/master",
+      "displayId": "master",
+      "type": "BRANCH",
+      "latestCommit": "222222d1d6c87172cf2dea0f3c18df6ed687ead4",
+      "latestChangeset": "222222d1d6c87172cf2dea0f3c18df6ed687ead4",
+      "isDefault": true
+    },
+    {
+      "id": "refs/heads/some-feature",
+      "displayId": "some-feature",
+      "type": "BRANCH",
+      "latestCommit": "ssdfsdfsdfsdfsdfdf",
+      "latestChangeset": "ssdfsdfsdfsdfsdfdf",
+      "isDefault": false
+    }
+  ],
+  "start": 0
+}
