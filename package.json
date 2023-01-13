@@ -10,7 +10,7 @@
     "start": "npm run build && node ./lib/cli.js",
     "mock": "npx wiremock --root-dir wiremock --verbose"
   },
-  "bin": "./lib/spawner/bin.js",
+  "bin": "./lib/cli.js",
   "dependencies": {
     "axios": "^0.24.0",
     "commander": "^8.3.0"
