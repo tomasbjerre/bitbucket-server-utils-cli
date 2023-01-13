@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import BitbucketService from './bitbucketserver/BitbucketServerClient';
 import formatComment from './format-comment/format-comment';
 import gatherInformation from './gather-information/gather-information';
+import { LOG_LEVEL, setLogLevel } from './log/log';
 import postPrComment from './post-pr-comment/post-pr-comment';
 
 const pkgJson = require('../package.json');
@@ -52,11 +53,18 @@ const program = new Command()
     '-ck, --comment-key <rs>',
     'Some string that identifies the comment. Will ensure same comment is not re-posted if unchanged and replaced if changed.'
   )
-  .option('-prid, --pull-request <prid>');
+  .option('-prid, --pull-request <prid>')
+  .option(
+    '--log-level <level>',
+    'Log level DEBUG, INFO or ERROR',
+    'ERROR' as LOG_LEVEL
+  );
 
 program.parse(process.argv);
 
 const options = program.opts();
+
+setLogLevel(options.logLevel as LOG_LEVEL);
 
 const bitbucketService = new BitbucketService({
   personalAccessToken: options.bitbucketServerAccessToken,

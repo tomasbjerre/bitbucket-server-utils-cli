@@ -8,6 +8,7 @@ import {
   PullRequestComment,
 } from './Model';
 import axios, { AxiosRequestConfig } from 'axios';
+import log from '../log/log';
 
 export default class BitbucketService {
   private config: AxiosRequestConfig;
@@ -17,7 +18,7 @@ export default class BitbucketService {
       JSON.stringify(settings)
     ) as BitbucketServer;
     maskedSettings.personalAccessToken = '<masked>';
-    console.log(maskedSettings);
+    log('DEBUG', maskedSettings);
     this.config = settings.personalAccessToken
       ? {
           headers: {
@@ -31,9 +32,9 @@ export default class BitbucketService {
     const categories = [];
     for (let project of this.settings.projects) {
       const url = `${this.settings.url}/projects/${project}/repos?limit=9999`;
-      console.log('> ' + url);
+      log('DEBUG', '> ' + url);
       const response = await axios.get(url, this.config);
-      //console.log('response: ' + JSON.stringify(response.data));
+      //log('DEBUG','response: ' + JSON.stringify(response.data));
       categories.push(
         response.data.values.map((it: any) => {
           return {
@@ -54,7 +55,7 @@ export default class BitbucketService {
 
   async getRepository(repo: RepositorySlug): Promise<Repository> {
     const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}?limit=9999`;
-    console.log('> ' + url);
+    log('DEBUG', '> ' + url);
     const response = await axios.get(url, this.config);
     return {
       slug: response.data.slug,
@@ -66,7 +67,7 @@ export default class BitbucketService {
 
   async getBranches(repo: RepositorySlug): Promise<Branch[]> {
     const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/branches?limit=9999`;
-    console.log('> ' + url);
+    log('DEBUG', '> ' + url);
     const response = await axios.get(url, this.config);
     return response.data.values
       .map((data: any) => {
@@ -84,7 +85,7 @@ export default class BitbucketService {
 
   async getPullRequests(repo: RepositorySlug): Promise<string[]> {
     const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests?limit=9999`;
-    console.log('> ' + url);
+    log('DEBUG', '> ' + url);
     const response = await axios.get(url, this.config);
     return response.data.values
       .map((data: any) => {
@@ -95,7 +96,7 @@ export default class BitbucketService {
 
   async getPullRequest(repo: RepositorySlug, id: string): Promise<PullRequest> {
     const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests/${id}`;
-    console.log('> ' + url);
+    log('DEBUG', '> ' + url);
     const response = await axios.get(url, this.config);
     return {
       id: response.data.id,
@@ -114,7 +115,7 @@ export default class BitbucketService {
 
   async getCommit(repo: RepositorySlug, commit: string): Promise<Commit> {
     const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/commits/${commit}`;
-    console.log('> ' + url);
+    log('DEBUG', '> ' + url);
     const response = await axios.get(url, this.config);
     return {
       displayId: response.data.displayId,
@@ -135,7 +136,7 @@ export default class BitbucketService {
       commentMessage = config.message + '\n\n' + config.commentKey;
 
       const urlActivities = `${this.settings.url}/projects/${config.repo.projectSlug}/repos/${config.repo.repoSlug}/pull-requests/${config.pullRequest}/activities?limit=9999`;
-      console.log('> ' + urlActivities);
+      log('DEBUG', '> ' + urlActivities);
       const response = await axios.get(urlActivities, this.config);
       const willDelete: any[] = response.data.values
         .filter((activity: any) => {
@@ -153,17 +154,18 @@ export default class BitbucketService {
           return activity.comment;
         });
       if (identicalCommentFound) {
-        console.log('Identical comment exists, will not comment again.');
+        log('DEBUG', 'Identical comment exists, will not comment again.');
         return;
       }
 
-      console.log(`Deleting old comments ${willDelete}`);
+      log('DEBUG', `Deleting old comments ${willDelete}`);
       for (let comment of willDelete) {
         try {
           const urlDelete = `${this.settings.url}/projects/${config.repo.projectSlug}/repos/${config.repo.repoSlug}/pull-requests/${config.pullRequest}/comments/${comment.id}?version=${comment.version}`;
           await axios.delete(urlDelete, this.config);
         } catch (e) {
-          console.log(
+          log(
+            'DEBUG',
             `Was unable to delete ${comment.id} ${comment.version} ${e}`
           );
         }
@@ -175,7 +177,7 @@ export default class BitbucketService {
       severity: config.severity,
       text: commentMessage,
     };
-    console.log('> ' + commentsUrl);
+    log('DEBUG', '> ' + commentsUrl);
     await axios.post(commentsUrl, postContent, this.config);
   }
 }
