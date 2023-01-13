@@ -1,10 +1,11 @@
 {
   "name": "bitbucket-server-utils-cli",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "scripts": {
     "build": "rm -rf lib && npm run format && mkdir lib && tsc -p .",
     "format": "prettier --write .",
-    "release": "npm run build && npm version patch && npm publish && git push --follow-tags && npm run changelog",
+    "release": "npm run set-version; npm run build && npm publish && git push --follow-tags && npm run changelog",
+    "set-version": "npm version $(npx git-changelog-command-line --print-next-version) --no-git-tag-version",
     "changelog": "npx git-changelog-command-line -of CHANGELOG.md && git commit -a -m 'chore: changelog'",
     "start": "npm run build && node ./lib/cli.js",
     "mock": "npx wiremock --root-dir wiremock --verbose"
