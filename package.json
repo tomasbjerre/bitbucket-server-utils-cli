@@ -6,12 +6,11 @@
     "format": "prettier --write .",
     "release": "npm run build && npm version patch && npm publish && git push --follow-tags",
     "start": "npm run build && node ./lib/cli.js",
-    "start-mock": "npx wiremock --root-dir wiremock --verbose"
+    "mock": "npx wiremock --root-dir wiremock --verbose"
   },
   "bin": "./lib/spawner/bin.js",
   "dependencies": {
     "axios": "^0.24.0",
-    "figlet": "^1.5.2",
     "commander": "^8.3.0"
   },
   "devDependencies": {
