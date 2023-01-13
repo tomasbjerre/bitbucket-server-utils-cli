@@ -4,7 +4,8 @@
   "scripts": {
     "build": "rm -rf lib && npm run format && mkdir lib && tsc -p .",
     "format": "prettier --write .",
-    "release": "npm run build && npm version patch && npm publish && git push --follow-tags",
+    "release": "npm run build && npm version patch && npm publish && git push --follow-tags && npm run changelog",
+    "changelog": "npx git-changelog-command-line -of CHANGELOG.md && git commit -a -m 'chore: changelog'",
     "start": "npm run build && node ./lib/cli.js",
     "mock": "npx wiremock --root-dir wiremock --verbose"
   },
