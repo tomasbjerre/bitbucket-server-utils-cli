@@ -66,5 +66,6 @@ Options:
   -ck, --comment-key <rs>                          Some string that identifies the comment. Will ensure same comment is not re-posted if
                                                    unchanged and replaced if changed.
   -prid, --pull-request <prid>
+  --log-level <level>                              Log level DEBUG, INFO or ERROR (default: "ERROR")
   -h, --help                                       display help for command
 ```
