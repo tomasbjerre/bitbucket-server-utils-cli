@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import BitbucketService from './bitbucketserver/BitbucketServerClient';
-import formatComment from './format-comment/format-comment';
-import gatherInformation from './gather-information/gather-information';
-import { LOG_LEVEL, setLogLevel } from './log/log';
+import BitbucketService from './bitbucketserver/bitbucket-service';
+import formatString from './format-string/format-string';
+import gatherState from './state/gather';
+import { saveState } from './state/storage';
+import { LOG_LEVEL, setLogLevel } from './utils/log';
 import postPrComment from './post-pr-comment/post-pr-comment';
 
 const pkgJson = require('../package.json');
@@ -30,13 +31,15 @@ const program = new Command()
     commaSeparatedList
   )
   .option(
-    '-gi, --gather-information',
-    'Gather information from Bitbucket Server and store it in a file.'
+    '-gs, --gather-state',
+    'Gather state from Bitbucket Server and store it in a file.'
   )
   .option(
-    '-if, --information-file <filename>',
-    'File to read, and write, information to.'
+    '-gss, --gather-state-sleep <milliseconds>',
+    'Milliseconds to sleep between HTTP requests.',
+    '300'
   )
+  .option('-sf, --state-file <filename>', 'File to read, and write, state to.')
   .option(
     '-fc, --format-user-comment',
     'Format a comment that may be presented to the user. A context is provided that is rendered with a supplied Handlebars-template.'
@@ -57,7 +60,7 @@ const program = new Command()
   .option(
     '--log-level <level>',
     'Log level DEBUG, INFO or ERROR',
-    'ERROR' as LOG_LEVEL
+    'INFO' as LOG_LEVEL
   );
 
 program.parse(process.argv);
@@ -72,10 +75,16 @@ const bitbucketService = new BitbucketService({
   url: options.bitbucketServerUrl,
 });
 
-if (options.gatherInformation) {
-  gatherInformation(bitbucketService, options);
+if (options.gatherState) {
+  gatherState(bitbucketService, options).then((state) => {
+    saveState(state, options.stateFile);
+  });
 } else if (options.formatComment) {
-  formatComment(bitbucketService, options);
+  formatString(bitbucketService, options);
 } else if (options.postPullRequestComment) {
   postPrComment(bitbucketService, options);
+} else {
+  console.error(JSON.stringify(options));
+  console.error(program.help());
+  process.exit(1);
 }

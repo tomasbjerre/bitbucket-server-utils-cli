@@ -8,7 +8,7 @@ import {
   PullRequestComment,
 } from './Model';
 import axios, { AxiosRequestConfig } from 'axios';
-import log from '../log/log';
+import log from '../utils/log';
 
 export default class BitbucketService {
   private config: AxiosRequestConfig;

@@ -20,6 +20,7 @@ export interface Branch {
 
 export interface PullRequest {
   id: string;
+  repository: RepositorySlug;
   title: string;
   state: string;
   author: Author;

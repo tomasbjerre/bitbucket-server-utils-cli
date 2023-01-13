@@ -1,4 +1,4 @@
-import BitbucketService from '../bitbucketserver/BitbucketServerClient';
+import BitbucketService from '../bitbucketserver/bitbucket-service';
 
 export default async function postPrComment(
   bitbucketService: BitbucketService,
