@@ -2,6 +2,20 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.6.0 (2023-01-14)
+
+### Features
+
+-  format string ([dd618](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/dd618af3c8ec00f) Tomas Bjerre)  
+
+### Other changes
+
+**1.6.0**
+
+
+[1ebfa](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/1ebfad09f93347b) Tomas Bjerre *2023-01-14 20:05:38*
+
+
 ## v1.5.0 (2023-01-14)
 
 ### Features
