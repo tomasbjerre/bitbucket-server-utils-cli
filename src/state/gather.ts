@@ -1,20 +1,14 @@
 import BitbucketService from '../bitbucketserver/bitbucket-service';
-import { RepositorySlug } from '../bitbucketserver/Model';
 import log from '../utils/log';
 import sleep from '../utils/sleep';
 import { BitbucketServerState } from './Model';
-import { getState } from './storage';
+import { getEmptyState } from './storage';
 
 export default async function gatherState(
   bitbucketService: BitbucketService,
   options: any
 ): Promise<BitbucketServerState> {
-  const state: BitbucketServerState = {
-    v1: {
-      lastUpdated: new Date().getTime(),
-      pullRequests: [],
-    },
-  };
+  const state: BitbucketServerState = getEmptyState();
 
   const sleepTime = parseInt(options.gatherInformationSleep);
   log(
@@ -45,7 +39,7 @@ export default async function gatherState(
         repositorySlug,
         pullRequestId
       );
-      state.v1.pullRequests.push(pullRequest);
+      state.pullRequests.push(pullRequest);
       await sleep(sleepTime);
     }
     await sleep(sleepTime);

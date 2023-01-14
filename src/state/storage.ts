@@ -2,15 +2,42 @@ import { BitbucketServerState } from './Model';
 import log from '../utils/log';
 import fs from 'fs';
 
+interface StorageState {
+  v1: BitbucketServerState;
+}
+
+export function getEmptyState(): BitbucketServerState {
+  return {
+    lastUpdated: new Date().getTime(),
+    pullRequests: [],
+  };
+}
 export function getState(filename: string): BitbucketServerState {
   log('DEBUG', `Reading state from ${filename}`);
-  const jsonState = fs.readFileSync(filename, 'utf-8');
-  const state = JSON.parse(jsonState);
-  return state as BitbucketServerState;
+  if (!filename) {
+    throw new Error(`No filename supplied`);
+  }
+  if (!fs.existsSync(filename)) {
+    throw new Error(`Filename does not exist: ${filename}`);
+  }
+  const storageStateJson = fs.readFileSync(filename, 'utf-8');
+  const storageState = JSON.parse(storageStateJson) as StorageState;
+  return storageState.v1;
+}
+
+export function getOrCreateState(filename: string): BitbucketServerState {
+  try {
+    return getState(filename);
+  } catch (e) {
+    return getEmptyState();
+  }
 }
 
 export function saveState(state: BitbucketServerState, filename: string) {
   log('INFO', `Storing state in ${filename}`);
-  const jsonState = JSON.stringify(state, null, 4);
+  const storageState: StorageState = {
+    v1: state,
+  };
+  const jsonState = JSON.stringify(storageState, null, 4);
   fs.writeFileSync(filename, jsonState);
 }

@@ -44,6 +44,26 @@ npx bitbucket-server-utils-cli \
  --state-file /tmp/some-file.json
 ```
 
+### Format string
+
+Format a string by rendering a Handlebars-template with the state as context.
+
+```sh
+template=$(cat <<-END
+This is line one.
+This is line two.
+This is line three.
+END
+)
+renderedString=$(npm bitbucket-server-utils-cli \
+ --format-string \
+ --state-file /tmp/some-file.json \
+ --template "$template")
+echo "The rendered string is: $renderedString"
+```
+
+Now the `$renderedString` can perhaps be used as a comment, or maby it is rendered HTML that you want to write to a file.
+
 ### Comment pull-request
 
 Comment a pull-request:
@@ -70,9 +90,8 @@ Options:
   -gs, --gather-state                              Gather state from Bitbucket Server and store it in a file.
   -gss, --gather-state-sleep <milliseconds>        Milliseconds to sleep between HTTP requests. (default: "300")
   -sf, --state-file <filename>                     File to read, and write, state to.
-  -fc, --format-user-comment                       Format a comment that may be presented to the user. A context is provided that is
-                                                   rendered with a supplied Handlebars-template.
-  -t, --template <filename>                        File containing Handlebars template.
+  -fc, --format-string                             Format a string by rendering a Handlebars-template with the state as context.
+  -t, --template <string>                          String containing Handlebars template.
   -pprc, --post-pull-request-comment <comment>     Post a pull-request comment
   -ps, --project-slug <ps>
   -rs, --repository-slug <rs>

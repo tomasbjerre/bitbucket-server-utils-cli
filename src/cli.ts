@@ -41,10 +41,10 @@ const program = new Command()
   )
   .option('-sf, --state-file <filename>', 'File to read, and write, state to.')
   .option(
-    '-fc, --format-user-comment',
-    'Format a comment that may be presented to the user. A context is provided that is rendered with a supplied Handlebars-template.'
+    '-fc, --format-string',
+    'Format a string by rendering a Handlebars-template with the state as context.'
   )
-  .option('-t, --template <filename>', 'File containing Handlebars template.')
+  .option('-t, --template <string>', 'String containing Handlebars template.')
   .option(
     '-pprc, --post-pull-request-comment <comment>',
     'Post a pull-request comment'
@@ -79,7 +79,7 @@ if (options.gatherState) {
   gatherState(bitbucketService, options).then((state) => {
     saveState(state, options.stateFile);
   });
-} else if (options.formatComment) {
+} else if (options.formatString) {
   formatString(bitbucketService, options);
 } else if (options.postPullRequestComment) {
   postPrComment(bitbucketService, options);
