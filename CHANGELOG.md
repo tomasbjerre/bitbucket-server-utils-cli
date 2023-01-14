@@ -2,6 +2,20 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.5.0 (2023-01-14)
+
+### Features
+
+-  gather state ([27613](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/27613e91006e663) Tomas Bjerre)  
+
+### Other changes
+
+**1.5.0**
+
+
+[38cc5](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/38cc5ea68e6ec53) Tomas Bjerre *2023-01-14 19:26:05*
+
+
 ## v1.4.1 (2023-01-13)
 
 ### Bug Fixes
