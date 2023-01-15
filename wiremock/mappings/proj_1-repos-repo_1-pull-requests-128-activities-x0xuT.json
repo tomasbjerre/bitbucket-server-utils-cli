@@ -1,0 +1,12 @@
+{
+  "id": "58a8ab7d-f5fd-3be3-b8bd-822792c855c6",
+  "request": {
+    "url": "/rest/api/latest/projects/PROJ_1/repos/repo_1/pull-requests/128/activities?limit=9999",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "proj_1-repos-repo_1-pull-requests-128-activities-x0xuT.json"
+  },
+  "uuid": "58a8ab7d-f5fd-3be3-b8bd-822792c855c6"
+}

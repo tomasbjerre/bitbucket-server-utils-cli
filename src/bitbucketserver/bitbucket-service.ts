@@ -98,6 +98,10 @@ export default class BitbucketService {
             displayName: data.author.user.displayName,
             slug: data.author.user.slug,
           },
+          repository: {
+            projectSlug: repo.projectSlug,
+            repoSlug: repo.repoSlug,
+          },
           reviewers: data.reviewers.map((reviewer: any) => {
             return {
               user: {
@@ -182,6 +186,7 @@ export default class BitbucketService {
   }
 
   async postPullRequestComment(config: PullRequestComment): Promise<void> {
+    log('DEBUG', `Commenting ${JSON.stringify(config)}`);
     let commentMessage = config.message;
     let identicalCommentFound = false;
 

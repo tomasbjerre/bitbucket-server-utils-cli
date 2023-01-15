@@ -32,7 +32,7 @@ export interface PullRequest {
 
 export interface Reviewer {
   role: 'REVIEWER' | 'AUTHOR' | 'PARTICIPANT';
-  status: 'UNAPPROVED' | 'NEEDS_WORK' | 'APPROVED';
+  status: 'UNAPPROVED' | 'NEEDS_WORK' | 'APPROVED' | undefined;
   user: User;
 }
 

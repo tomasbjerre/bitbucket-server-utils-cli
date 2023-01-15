@@ -114,6 +114,26 @@ npx bitbucket-server-utils-cli \
   --comment-key somethingunique
 ```
 
+### Comment any pull-request where the author has pull-requests to review
+
+A comment with specific message to authors who has other pull-requests to review.
+
+```sh
+template=$(cat <<-END
+You, **{{authorPullRequest.author}}**, have pull-requests that are waiting for your feedback:
+{{#each pullRequests}}
+  - [{{title}}](http://bitbucket-server/projects/{{repository.projectSlug}}/repos/{{repository.repoSlug}}/pull-requests/{{id}}/)
+{{/each}}
+END
+)
+npm bitbucket-server-utils-cli \
+  --post-pull-request-comment-if-open-pull-requests \
+  --url http://localhost:8080/rest/api/latest \
+  --access-token asd...asd \
+  --state-file /tmp/some-file.json \
+  --template "$template"
+```
+
 ## Command line arguments
 
 ```shell

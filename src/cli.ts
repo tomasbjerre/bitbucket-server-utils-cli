@@ -8,6 +8,7 @@ import { saveState } from './state/storage';
 import log, { LOG_LEVEL, setLogLevel } from './utils/log';
 import postPrComment from './post-pr-comment/post-pr-comment';
 import deletePrComment from './delete-pr-comment/delete-pr-comment';
+import postPullRequestCommentIfOpenPullRequests from './post-pull-request-comment-if-open-pull-requests/post-pull-request-comment-if-open-pull-requests';
 
 const pkgJson = require('../package.json');
 
@@ -71,6 +72,13 @@ const program = new Command()
     'Post a pull-request comment'
   )
   /**
+   * Post pull-request comment if author has open pull-requests to review
+   */
+  .option(
+    '-pprciopr, --post-pull-request-comment-if-open-pull-requests',
+    'Post pull-request comment if author has open pull-requests to review'
+  )
+  /**
    * Delete pull-request comment
    */
   .option(
@@ -95,11 +103,13 @@ if (options.gatherState) {
     saveState(state, options.stateFile);
   });
 } else if (options.formatString) {
-  formatString(bitbucketService, options);
+  formatString(options);
 } else if (options.postPullRequestComment) {
   postPrComment(bitbucketService, options);
 } else if (options.deletePullRequestComment) {
   deletePrComment(bitbucketService, options);
+} else if (options.postPullRequestCommentIfOpenPullRequests) {
+  postPullRequestCommentIfOpenPullRequests(bitbucketService, options);
 } else {
   console.error(JSON.stringify(options));
   console.error(program.help());
