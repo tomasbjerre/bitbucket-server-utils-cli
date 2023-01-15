@@ -74,6 +74,7 @@ export default class BitbucketService {
         return {
           displayId: data.displayId,
           latestCommit: data.latestCommit,
+          isDefault: data.isDefault,
         } as Branch;
       })
       .sort((a: Branch, b: Branch) =>
@@ -118,6 +119,10 @@ export default class BitbucketService {
               status: reviewer.status,
             } as Reviewer;
           }),
+          fromRef: {
+            displayId: data.fromRef.displayId,
+            latestCommit: data.fromRef.latestCommit,
+          },
         } as PullRequest;
       })
       .sort();
@@ -130,6 +135,8 @@ export default class BitbucketService {
     await sleep(this.settings.sleepTime);
     return {
       displayId: response.data.displayId,
+      authorTimestamp: response.data.authorTimestamp,
+      committerTimestamp: response.data.committerTimestamp,
       author: {
         name: response.data.author.name,
         emailAddress: response.data.author.emailAddress,

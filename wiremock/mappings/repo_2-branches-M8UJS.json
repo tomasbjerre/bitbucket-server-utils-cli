@@ -1,0 +1,12 @@
+{
+  "id": "950c6d69-5f59-3a34-93ff-cb336b08a470",
+  "request": {
+    "url": "/rest/api/latest/projects/PROJ_1/repos/repo_2/branches?limit=9999",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "repo_2-branches-M8UJS.json"
+  },
+  "uuid": "950c6d69-5f59-3a34-93ff-cb336b08a470"
+}

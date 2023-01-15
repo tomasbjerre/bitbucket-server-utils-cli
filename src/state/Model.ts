@@ -9,6 +9,7 @@ export interface RepositoryState {
   repository: Repository;
   pullRequests: PullRequest[];
   branches: Branch[];
+  commits: Record<string, Commit>;
 }
 
 export interface BitbucketServerState {

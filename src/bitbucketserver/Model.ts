@@ -21,6 +21,10 @@ export interface Branch {
   latestCommit: string;
 }
 
+export interface Ref {
+  displayId: string;
+  latestCommit: string;
+}
 export interface PullRequest {
   id: string;
   repository: RepositorySlug;
@@ -30,6 +34,7 @@ export interface PullRequest {
   reviewers: Reviewer[];
   createdDate: string;
   updatedDate: string;
+  fromRef: Ref;
 }
 
 export interface Reviewer {
@@ -46,6 +51,8 @@ export interface User {
 }
 export interface Commit {
   displayId: string;
+  authorTimestamp: string;
+  committerTimestamp: string;
   author: User;
 }
 
