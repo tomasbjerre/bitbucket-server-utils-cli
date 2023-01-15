@@ -2,6 +2,21 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.8.0 (2023-01-15)
+
+### Features
+
+-  comment pull-requests if others are waiting ([55b8f](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/55b8fe5831e2ad6) Tomas Bjerre)  
+-  refactoring context ([b15be](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/b15bec3d1b186ee) Tomas Bjerre)  
+
+### Other changes
+
+**1.8.0**
+
+
+[b62d3](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/b62d3bcfe951860) Tomas Bjerre *2023-01-15 17:45:33*
+
+
 ## v1.7.0 (2023-01-15)
 
 ### Features
