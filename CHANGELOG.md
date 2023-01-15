@@ -2,6 +2,21 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.7.0 (2023-01-15)
+
+### Features
+
+-  delete pull-request by comment key ([3c442](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/3c442baba29699a) Tomas Bjerre)  
+-  delete pull-request by id ([88d9e](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/88d9e0c08a00dd1) Tomas Bjerre)  
+
+### Other changes
+
+**1.7.0**
+
+
+[864ac](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/864acaad926a36d) Tomas Bjerre *2023-01-15 14:50:54*
+
+
 ## v1.6.1 (2023-01-15)
 
 ### Bug Fixes
