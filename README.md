@@ -84,7 +84,7 @@ npx bitbucket-server-utils-cli \
   --comment-key somethingunique
 ```
 
-### Delete comment in pull-request
+### Delete comment in pull-request by id
 
 Delete comment in pull-request:
 
@@ -97,6 +97,21 @@ npx bitbucket-server-utils-cli \
   --repository-slug repo_1 \
   --pull-request 461 \
   --pull-request-comment-id 999
+```
+
+### Delete comment in pull-request by comment key
+
+Delete any comments in pull-request if they contain the comment key:
+
+```sh
+npx bitbucket-server-utils-cli \
+  --delete-pull-request-comment \
+  --url http://localhost:8080/rest/api/latest \
+  --access-token asd...asd \
+  --projects PROJ_1 \
+  --repository-slug repo_1 \
+  --pull-request 461 \
+  --comment-key somethingunique
 ```
 
 ## Command line arguments

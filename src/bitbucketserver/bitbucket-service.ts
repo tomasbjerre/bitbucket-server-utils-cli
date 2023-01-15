@@ -6,7 +6,6 @@ import {
   Commit,
   PullRequest,
   PullRequestComment,
-  PullRequestDeleteComment,
   PullRequestCommentId,
 } from './Model';
 import axios, { AxiosRequestConfig } from 'axios';
@@ -130,20 +129,54 @@ export default class BitbucketService {
     } as Commit;
   }
 
-  async deletePullRequestComment(
-    config: PullRequestDeleteComment
+  async findCommentsByCommentKey(
+    repo: RepositorySlug,
+    pullRequest: string,
+    commentKey: string
+  ): Promise<PullRequestCommentId[]> {
+    const urlActivities = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests/${pullRequest}/activities?limit=9999`;
+    log('DEBUG', '> ' + urlActivities);
+    const response = await axios.get(urlActivities, this.config);
+    return response.data.values
+      .filter((activity: any) => {
+        return (
+          activity.action == 'COMMENTED' &&
+          activity.comment.text.indexOf(commentKey) != -1
+        );
+      })
+      .filter((activity: any) => activity.comment);
+  }
+
+  async deletePullRequestCommentById(
+    repo: RepositorySlug,
+    pullRequest: string,
+    comment: PullRequestCommentId
   ): Promise<void> {
     try {
-      const version = config.comment.version
-        ? `?version=${config.comment.version}`
-        : '';
-      const urlDelete = `${this.settings.url}/projects/${config.repo.projectSlug}/repos/${config.repo.repoSlug}/pull-requests/${config.pullRequest}/comments/${config.comment.id}${version}`;
+      const version = comment.version ? `?version=${comment.version}` : '';
+      const urlDelete = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests/${pullRequest}/comments/${comment.id}${version}`;
       await axios.delete(urlDelete, this.config);
     } catch (e) {
       log(
         'DEBUG',
-        `Was unable to delete ${config.comment.id} ${config.comment.version} ${e}`
+        `Was unable to delete ${comment.id} ${comment.version} ${e}`
       );
+    }
+  }
+
+  async deletePullRequestCommentByCommentKey(
+    repo: RepositorySlug,
+    pullRequest: string,
+    commentKey: string
+  ): Promise<void> {
+    const existingComments = await this.findCommentsByCommentKey(
+      repo,
+      pullRequest,
+      commentKey
+    );
+    log('DEBUG', `Deleting old comments ${existingComments}`);
+    for (let comment of existingComments) {
+      await this.deletePullRequestCommentById(repo, pullRequest, comment);
     }
   }
 
@@ -154,24 +187,17 @@ export default class BitbucketService {
     if (config.commentKey) {
       commentMessage = config.message + '\n\n' + config.commentKey;
 
-      const urlActivities = `${this.settings.url}/projects/${config.repo.projectSlug}/repos/${config.repo.repoSlug}/pull-requests/${config.pullRequest}/activities?limit=9999`;
-      log('DEBUG', '> ' + urlActivities);
-      const response = await axios.get(urlActivities, this.config);
-      const willDelete: PullRequestCommentId[] = response.data.values
-        .filter((activity: any) => {
-          return (
-            activity.action == 'COMMENTED' &&
-            activity.comment.text.indexOf(config.commentKey) != -1
-          );
-        })
-        .map((activity: any) => {
-          if (
-            activity.comment.text.trim().indexOf(commentMessage.trim()) != -1
-          ) {
-            identicalCommentFound = true;
-          }
-          return activity.comment;
-        });
+      const existingComments = await this.findCommentsByCommentKey(
+        config.repo,
+        config.pullRequest,
+        config.commentKey
+      );
+      const willDelete = existingComments.map((comment: any) => {
+        if (comment.text.trim().indexOf(commentMessage.trim()) != -1) {
+          identicalCommentFound = true;
+        }
+        return comment;
+      });
       if (identicalCommentFound) {
         log('DEBUG', 'Identical comment exists, will not comment again.');
         return;
@@ -179,11 +205,11 @@ export default class BitbucketService {
 
       log('DEBUG', `Deleting old comments ${willDelete}`);
       for (let comment of willDelete) {
-        await this.deletePullRequestComment({
-          pullRequest: config.pullRequest,
-          repo: config.repo,
-          comment,
-        });
+        await this.deletePullRequestCommentById(
+          config.repo,
+          config.pullRequest,
+          comment
+        );
       }
     }
 
