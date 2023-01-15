@@ -1,5 +1,4 @@
 export interface BitbucketServer {
-  projects: string[];
   personalAccessToken: string;
   url: string;
 }

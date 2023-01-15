@@ -10,13 +10,13 @@ export default async function gatherState(
 ): Promise<BitbucketServerState> {
   const state: BitbucketServerState = getEmptyState();
 
-  const sleepTime = parseInt(options.gatherInformationSleep);
+  const sleepTime = parseInt(options.sleepTime);
   log(
     'INFO',
-    `Using ${options.informationFile} and waiting ${sleepTime}ms between HTTP requests.`
+    `Using ${options.stateFile} and waiting ${sleepTime}ms between HTTP requests.`
   );
 
-  const repositories = await bitbucketService.getRepositories();
+  const repositories = await bitbucketService.getRepositories(options.projects);
   await sleep(sleepTime);
   for (let repoIndex = 0; repoIndex < repositories.length; repoIndex++) {
     const repositorySlug = repositories[repoIndex];

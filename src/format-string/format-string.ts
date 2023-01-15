@@ -8,10 +8,18 @@ export default async function formatString(
   options: any
 ) {
   const templateString = options.template;
-  const templateHandlebars = Handlebars.compile(templateString);
-  const context = getState(options.stateFile);
-  const rendered = templateHandlebars(context);
-  log('DEBUG', `Rendering context:\n\n${JSON.stringify(context, null, 4)}\n\n`);
-  log('DEBUG', `Rendering template:\n\n${templateString}\n\n`);
-  console.log(rendered);
+  let context = undefined;
+  try {
+    const templateHandlebars = Handlebars.compile(templateString);
+    context = getState(options.stateFile);
+    const rendered = templateHandlebars(context);
+    console.log(rendered);
+  } catch (e) {
+    log(
+      'ERROR',
+      `Rendering context:\n\n${JSON.stringify(context, null, 4)}\n\n`
+    );
+    log('ERROR', `Rendering template:\n\n${templateString}\n\n`);
+    throw e;
+  }
 }

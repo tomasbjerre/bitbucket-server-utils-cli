@@ -17,18 +17,18 @@ The CLI can be run from this repo with:
 
 ```sh
 npm run start -- \
- -bbsat asd...asd \
- -bbsu http://localhost:8080/rest/api/latest \
- -bbsp PROJ_1
+ -at asd...asd \
+ -u http://localhost:8080/rest/api/latest \
+ -p PROJ_1
 ```
 
 Or standalone with:
 
 ```sh
 npx bitbucket-server-utils-cli \
- -bbsat asd...asd \
- -bbsu http://localhost:8080/rest/api/latest \
- -bbsp PROJ_1
+ -at asd...asd \
+ -u http://localhost:8080/rest/api/latest \
+ -p PROJ_1
 ```
 
 ### Gather state
@@ -37,10 +37,10 @@ Gather state and store it in a file. This allows other features to quickly have 
 
 ```sh
 npx bitbucket-server-utils-cli \
- --bitbucket-server-url http://localhost:8080/rest/api/latest \
- --bitbucket-server-access-token asd...asd \
- --bitbucket-server-projects PROJ_1 \
  --gather-state \
+ --url http://localhost:8080/rest/api/latest \
+ --access-token asd...asd \
+ --projects PROJ_1 \
  --state-file /tmp/some-file.json
 ```
 
@@ -50,17 +50,21 @@ Format a string by rendering a Handlebars-template with the state as context.
 
 ```sh
 template=$(cat <<-END
-This is line one.
-This is line two.
-This is line three.
+ {{#each pullRequests}}
+   <p>
+     <b>Title:</b> <i>{{title}}</i>
+   </p>
+ {{/each}}
 END
 )
 renderedString=$(npm bitbucket-server-utils-cli \
  --format-string \
  --state-file /tmp/some-file.json \
- --template "$template")
+  --template "$template")
 echo "The rendered string is: $renderedString"
 ```
+
+_Or get the template from a file with `--template "$(</tmp/template.hbs)"`._
 
 Now the `$renderedString` can perhaps be used as a comment, or maby it is rendered HTML that you want to write to a file.
 
@@ -70,35 +74,34 @@ Comment a pull-request:
 
 ```sh
 npx bitbucket-server-utils-cli \
- --bitbucket-server-url http://localhost:8080/rest/api/latest \
- --bitbucket-server-access-token asd...asd \
- --project-slug PROJ_1 \
- --repository-slug repo_1 \
- --pull-request 461 \
- --severity BLOCKER \
- --comment-key somethingunique \
- --post-pull-request-comment "this is the comment"
+--post-pull-request-comment "this is the comment" \
+--url http://localhost:8080/rest/api/latest \
+--access-token asd...asd \
+--projects PROJ_1 \
+--repository-slug repo_1 \
+--pull-request 461 \
+--severity BLOCKER \
+--comment-key somethingunique
 ```
 
 ## Command line arguments
 
 ```shell
 Options:
-  -bbsat, --bitbucket-server-access-token <token>  Bitbucket Server access token
-  -bbsu, --bitbucket-server-url <url>              Bitbucket Server to use for REST integration (https://bitbucket-server/rest/api/latest)
-  -bbsp, --bitbucket-server-projects <projects>    Bitbucket Server projects. Example: PROJ_1,PROJ_2,PROJ_3
-  -gs, --gather-state                              Gather state from Bitbucket Server and store it in a file.
-  -gss, --gather-state-sleep <milliseconds>        Milliseconds to sleep between HTTP requests. (default: "300")
-  -sf, --state-file <filename>                     File to read, and write, state to.
-  -fc, --format-string                             Format a string by rendering a Handlebars-template with the state as context.
-  -t, --template <string>                          String containing Handlebars template.
-  -pprc, --post-pull-request-comment <comment>     Post a pull-request comment
-  -ps, --project-slug <ps>
+  -at, --access-token <token>                   Bitbucket Server access token
+  -u, --url <url>                               Bitbucket Server to use for REST integration (https://bitbucket-server/rest/api/latest)
+  -p, --projects <projects>                     Bitbucket Server projects. Example: PROJ_1,PROJ_2,PROJ_3
+  -sf, --state-file <filename>                  File to read, and write, state to.
+  -t, --template <string>                       String containing Handlebars template.
   -rs, --repository-slug <rs>
-  -sev, --severity <rs>                            BLOCKER or NORMAL (default: "NORMAL")
-  -ck, --comment-key <rs>                          Some string that identifies the comment. Will ensure same comment is not re-posted if
-                                                   unchanged and replaced if changed.
+  -sev, --severity <rs>                         BLOCKER or NORMAL (default: "NORMAL")
+  -ck, --comment-key <rs>                       Some string that identifies the comment. Will ensure same comment is not re-posted if
+                                                unchanged and replaced if changed.
   -prid, --pull-request <prid>
-  --log-level <level>                              Log level DEBUG, INFO or ERROR (default: "INFO")
-  -h, --help                                       display help for command
+  --log-level <level>                           Log level DEBUG, INFO or ERROR (default: "INFO")
+  -gs, --gather-state                           Gather state from Bitbucket Server and store it in a file.
+  -gss, --sleep-time <milliseconds>     Milliseconds to sleep between HTTP requests. (default: "300")
+  -fc, --format-string                          Format a string by rendering a Handlebars-template with the state as context.
+  -pprc, --post-pull-request-comment <comment>  Post a pull-request comment
+  -h, --help                                    display help for command
 ```

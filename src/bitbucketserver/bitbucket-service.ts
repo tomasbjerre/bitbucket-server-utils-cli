@@ -28,9 +28,9 @@ export default class BitbucketService {
       : {};
   }
 
-  async getRepositories(): Promise<RepositorySlug[]> {
+  async getRepositories(projects: string[]): Promise<RepositorySlug[]> {
     const categories = [];
-    for (let project of this.settings.projects) {
+    for (let project of projects) {
       const url = `${this.settings.url}/projects/${project}/repos?limit=9999`;
       log('DEBUG', '> ' + url);
       const response = await axios.get(url, this.config);
