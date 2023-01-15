@@ -1,6 +1,6 @@
 {
   "name": "bitbucket-server-utils-cli",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "scripts": {
     "build": "rm -rf lib && npm run format && mkdir lib && tsc -p .",
     "format": "prettier --write .",
