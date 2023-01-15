@@ -15,5 +15,4 @@ export interface RepositoryState {
 export interface BitbucketServerState {
   lastUpdated: number;
   repositories: Record<string, RepositoryState>;
-  commits: Record<string, Commit>;
 }

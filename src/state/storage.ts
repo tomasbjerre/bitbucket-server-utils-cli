@@ -10,7 +10,6 @@ interface StorageState {
 export function getEmptyState(): BitbucketServerState {
   return {
     lastUpdated: new Date().getTime(),
-    commits: {} as Record<string, Commit>,
     repositories: {} as Record<string, RepositoryState>,
   };
 }
