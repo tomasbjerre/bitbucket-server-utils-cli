@@ -2,6 +2,20 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.9.0 (2023-01-15)
+
+### Features
+
+-  dry-run ([f680b](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/f680bcfd2820fea) Tomas Bjerre)  
+
+### Other changes
+
+**1.9.0**
+
+
+[5014d](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/5014d14cccf5e30) Tomas Bjerre *2023-01-15 18:02:22*
+
+
 ## v1.8.0 (2023-01-15)
 
 ### Features
