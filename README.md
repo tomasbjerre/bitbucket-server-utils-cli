@@ -17,18 +17,18 @@ The CLI can be run from this repo with:
 
 ```sh
 npm run start -- \
- -at asd...asd \
- -u http://localhost:8080/rest/api/latest \
- -p PROJ_1
+  -at asd...asd \
+  -u http://localhost:8080/rest/api/latest \
+  -p PROJ_1
 ```
 
 Or standalone with:
 
 ```sh
 npx bitbucket-server-utils-cli \
- -at asd...asd \
- -u http://localhost:8080/rest/api/latest \
- -p PROJ_1
+  -at asd...asd \
+  -u http://localhost:8080/rest/api/latest \
+  -p PROJ_1
 ```
 
 ### Gather state
@@ -37,11 +37,11 @@ Gather state and store it in a file. This allows other features to quickly have 
 
 ```sh
 npx bitbucket-server-utils-cli \
- --gather-state \
- --url http://localhost:8080/rest/api/latest \
- --access-token asd...asd \
- --projects PROJ_1 \
- --state-file /tmp/some-file.json
+  --gather-state \
+  --url http://localhost:8080/rest/api/latest \
+  --access-token asd...asd \
+  --projects PROJ_1 \
+  --state-file /tmp/some-file.json
 ```
 
 ### Format string
@@ -58,8 +58,8 @@ template=$(cat <<-END
 END
 )
 renderedString=$(npm bitbucket-server-utils-cli \
- --format-string \
- --state-file /tmp/some-file.json \
+  --format-string \
+  --state-file /tmp/some-file.json \
   --template "$template")
 echo "The rendered string is: $renderedString"
 ```
@@ -74,14 +74,29 @@ Comment a pull-request:
 
 ```sh
 npx bitbucket-server-utils-cli \
---post-pull-request-comment "this is the comment" \
---url http://localhost:8080/rest/api/latest \
---access-token asd...asd \
---projects PROJ_1 \
---repository-slug repo_1 \
---pull-request 461 \
---severity BLOCKER \
---comment-key somethingunique
+  --post-pull-request-comment "this is the comment" \
+  --url http://localhost:8080/rest/api/latest \
+  --access-token asd...asd \
+  --projects PROJ_1 \
+  --repository-slug repo_1 \
+  --pull-request 461 \
+  --severity BLOCKER \
+  --comment-key somethingunique
+```
+
+### Delete comment in pull-request
+
+Delete comment in pull-request:
+
+```sh
+npx bitbucket-server-utils-cli \
+  --delete-pull-request-comment \
+  --url http://localhost:8080/rest/api/latest \
+  --access-token asd...asd \
+  --projects PROJ_1 \
+  --repository-slug repo_1 \
+  --pull-request 461 \
+  --pull-request-comment-id 999
 ```
 
 ## Command line arguments

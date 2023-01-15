@@ -45,3 +45,13 @@ export interface PullRequestComment {
   commentKey?: string;
   severity: 'NORMAL' | 'BLOCKER';
 }
+export interface PullRequestDeleteComment {
+  repo: RepositorySlug;
+  pullRequest: string;
+  comment: PullRequestCommentId;
+}
+
+export interface PullRequestCommentId {
+  id: string;
+  version?: string;
+}

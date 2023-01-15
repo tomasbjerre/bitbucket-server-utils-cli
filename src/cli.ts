@@ -7,6 +7,7 @@ import gatherState from './state/gather';
 import { saveState } from './state/storage';
 import log, { LOG_LEVEL, setLogLevel } from './utils/log';
 import postPrComment from './post-pr-comment/post-pr-comment';
+import deletePrComment from './delete-pr-comment/delete-pr-comment';
 
 const pkgJson = require('../package.json');
 
@@ -27,15 +28,17 @@ const program = new Command()
     'Bitbucket Server projects. Example: PROJ_1,PROJ_2,PROJ_3',
     commaSeparatedList
   )
+  .option('-rs, --repository-slug <rs>')
+  .option('-prid, --pull-request <prid>')
+  .option('-prcid, --pull-request-comment-id <id>')
+  .option('-prcv, --pull-request-comment-version <version>')
   .option('-sf, --state-file <filename>', 'File to read, and write, state to.')
   .option('-t, --template <string>', 'String containing Handlebars template.')
-  .option('-rs, --repository-slug <rs>')
   .option('-sev, --severity <rs>', 'BLOCKER or NORMAL', 'NORMAL')
   .option(
     '-ck, --comment-key <rs>',
     'Some string that identifies the comment. Will ensure same comment is not re-posted if unchanged and replaced if changed.'
   )
-  .option('-prid, --pull-request <prid>')
   .option(
     '--log-level <level>',
     'Log level DEBUG, INFO or ERROR',
@@ -66,6 +69,13 @@ const program = new Command()
   .option(
     '-pprc, --post-pull-request-comment <comment>',
     'Post a pull-request comment'
+  )
+  /**
+   * Delete pull-request comment
+   */
+  .option(
+    '-dprc, --delete-pull-request-comment',
+    'Delete pull-request comment with given ID'
   );
 
 program.parse(process.argv);
@@ -88,6 +98,8 @@ if (options.gatherState) {
   formatString(bitbucketService, options);
 } else if (options.postPullRequestComment) {
   postPrComment(bitbucketService, options);
+} else if (options.deletePullRequestComment) {
+  deletePrComment(bitbucketService, options);
 } else {
   console.error(JSON.stringify(options));
   console.error(program.help());

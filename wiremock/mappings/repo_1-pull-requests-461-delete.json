@@ -1,0 +1,11 @@
+{
+  "id": "6e22052f-2d4f-3563-9ed9-10969c063f3b",
+  "request": {
+    "url": "/rest/api/latest/projects/PROJ_1/repos/repo_1/pull-requests/461/comments/999",
+    "method": "DELETE"
+  },
+  "response": {
+    "status": 202
+  },
+  "uuid": "6e22052f-2d4f-3563-9ed9-10969c063f3b"
+}

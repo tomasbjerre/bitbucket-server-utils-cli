@@ -6,6 +6,8 @@ import {
   Commit,
   PullRequest,
   PullRequestComment,
+  PullRequestDeleteComment,
+  PullRequestCommentId,
 } from './Model';
 import axios, { AxiosRequestConfig } from 'axios';
 import log from '../utils/log';
@@ -128,6 +130,23 @@ export default class BitbucketService {
     } as Commit;
   }
 
+  async deletePullRequestComment(
+    config: PullRequestDeleteComment
+  ): Promise<void> {
+    try {
+      const version = config.comment.version
+        ? `?version=${config.comment.version}`
+        : '';
+      const urlDelete = `${this.settings.url}/projects/${config.repo.projectSlug}/repos/${config.repo.repoSlug}/pull-requests/${config.pullRequest}/comments/${config.comment.id}${version}`;
+      await axios.delete(urlDelete, this.config);
+    } catch (e) {
+      log(
+        'DEBUG',
+        `Was unable to delete ${config.comment.id} ${config.comment.version} ${e}`
+      );
+    }
+  }
+
   async postPullRequestComment(config: PullRequestComment): Promise<void> {
     let commentMessage = config.message;
     let identicalCommentFound = false;
@@ -138,7 +157,7 @@ export default class BitbucketService {
       const urlActivities = `${this.settings.url}/projects/${config.repo.projectSlug}/repos/${config.repo.repoSlug}/pull-requests/${config.pullRequest}/activities?limit=9999`;
       log('DEBUG', '> ' + urlActivities);
       const response = await axios.get(urlActivities, this.config);
-      const willDelete: any[] = response.data.values
+      const willDelete: PullRequestCommentId[] = response.data.values
         .filter((activity: any) => {
           return (
             activity.action == 'COMMENTED' &&
@@ -160,15 +179,11 @@ export default class BitbucketService {
 
       log('DEBUG', `Deleting old comments ${willDelete}`);
       for (let comment of willDelete) {
-        try {
-          const urlDelete = `${this.settings.url}/projects/${config.repo.projectSlug}/repos/${config.repo.repoSlug}/pull-requests/${config.pullRequest}/comments/${comment.id}?version=${comment.version}`;
-          await axios.delete(urlDelete, this.config);
-        } catch (e) {
-          log(
-            'DEBUG',
-            `Was unable to delete ${comment.id} ${comment.version} ${e}`
-          );
-        }
+        await this.deletePullRequestComment({
+          pullRequest: config.pullRequest,
+          repo: config.repo,
+          comment,
+        });
       }
     }
 
