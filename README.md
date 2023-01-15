@@ -57,7 +57,7 @@ template=$(cat <<-END
  {{/each}}
 END
 )
-renderedString=$(npm bitbucket-server-utils-cli \
+renderedString=$(npx bitbucket-server-utils-cli \
   --format-string \
   --state-file /tmp/some-file.json \
   --template "$template")
@@ -126,7 +126,7 @@ You, **{{authorPullRequest.author}}**, have pull-requests that are waiting for y
 {{/each}}
 END
 )
-npm bitbucket-server-utils-cli \
+npx bitbucket-server-utils-cli \
   --post-pull-request-comment-if-open-pull-requests \
   --url http://localhost:8080/rest/api/latest \
   --access-token asd...asd \
