@@ -9,8 +9,10 @@ export interface RepositorySlug {
 }
 
 export interface Repository {
-  slug: string;
+  slug: RepositorySlug;
   cloneUrl: string;
+  id: string;
+  state: string;
 }
 export interface Branch {
   displayId: string;
@@ -21,13 +23,20 @@ export interface PullRequest {
   id: string;
   repository: RepositorySlug;
   title: string;
-  state: string;
-  author: Author;
+  state: 'OPEN' | 'DECLINED' | 'MERGED';
+  author: User;
+  reviewers: Reviewer[];
   createdDate: string;
   updatedDate: string;
 }
 
-export interface Author {
+export interface Reviewer {
+  role: 'REVIEWER' | 'AUTHOR' | 'PARTICIPANT';
+  status: 'UNAPPROVED' | 'NEEDS_WORK' | 'APPROVED';
+  user: User;
+}
+
+export interface User {
   name: string;
   emailAddress: string;
   displayName: string;
@@ -35,7 +44,7 @@ export interface Author {
 }
 export interface Commit {
   displayId: string;
-  author: Author;
+  author: User;
 }
 
 export interface PullRequestComment {

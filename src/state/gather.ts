@@ -1,4 +1,5 @@
 import BitbucketService from '../bitbucketserver/bitbucket-service';
+import { PullRequest } from '../bitbucketserver/Model';
 import log from '../utils/log';
 import sleep from '../utils/sleep';
 import { BitbucketServerState } from './Model';
@@ -19,29 +20,22 @@ export default async function gatherState(
   const repositories = await bitbucketService.getRepositories(options.projects);
   await sleep(sleepTime);
   for (let repoIndex = 0; repoIndex < repositories.length; repoIndex++) {
-    const repositorySlug = repositories[repoIndex];
+    const repository = repositories[repoIndex];
     log(
       'INFO',
       `Repository ${repoIndex + 1} of ${repositories.length} - ${
-        repositorySlug.projectSlug
-      }/${repositorySlug.repoSlug}`
+        repository.slug.projectSlug
+      }/${repository.slug.repoSlug}`
     );
-    const pullRequests = await bitbucketService.getPullRequests(repositorySlug);
-    for (let prIndex = 0; prIndex < pullRequests.length; prIndex++) {
-      const pullRequestId = pullRequests[prIndex];
-      log(
-        'INFO',
-        `    Pull Request ${prIndex + 1} of ${
-          pullRequests.length
-        } - ${pullRequestId}`
-      );
-      const pullRequest = await bitbucketService.getPullRequest(
-        repositorySlug,
-        pullRequestId
-      );
-      state.pullRequests.push(pullRequest);
-      await sleep(sleepTime);
-    }
+    const pullRequests = await bitbucketService.getPullRequests(
+      repository.slug
+    );
+    const key = repository.slug.projectSlug + '-' + repository.slug.repoSlug;
+    state.repositories[key] = {
+      branches: [],
+      pullRequests,
+      repository: repository,
+    };
     await sleep(sleepTime);
   }
   return state;

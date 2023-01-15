@@ -46,13 +46,13 @@ npx bitbucket-server-utils-cli \
 
 ### Format string
 
-Format a string by rendering a Handlebars-template with the state as context.
+Format a string by rendering a [Handlebars-template](https://handlebarsjs.com/) with the state as context.
 
 ```sh
 template=$(cat <<-END
  {{#each pullRequests}}
    <p>
-     <b>Title:</b> <i>{{title}}</i>
+     <b>Last updated:</b> <i>{{lastUpdated}}</i>
    </p>
  {{/each}}
 END

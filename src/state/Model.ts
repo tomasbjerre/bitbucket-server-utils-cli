@@ -1,6 +1,18 @@
-import { PullRequest } from '../bitbucketserver/Model';
+import {
+  Branch,
+  Commit,
+  PullRequest,
+  Repository,
+} from '../bitbucketserver/Model';
+
+export interface RepositoryState {
+  repository: Repository;
+  pullRequests: PullRequest[];
+  branches: Branch[];
+}
 
 export interface BitbucketServerState {
   lastUpdated: number;
-  pullRequests: PullRequest[];
+  repositories: Record<string, RepositoryState>;
+  commits: Record<string, Commit>;
 }

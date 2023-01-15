@@ -1,6 +1,8 @@
-import { BitbucketServerState } from './Model';
+import { BitbucketServerState, RepositoryState } from './Model';
 import log from '../utils/log';
 import fs from 'fs';
+import { stringify } from 'querystring';
+import { Commit } from '../bitbucketserver/Model';
 
 interface StorageState {
   v1: BitbucketServerState;
@@ -9,7 +11,8 @@ interface StorageState {
 export function getEmptyState(): BitbucketServerState {
   return {
     lastUpdated: new Date().getTime(),
-    pullRequests: [],
+    commits: {} as Record<string, Commit>,
+    repositories: {} as Record<string, RepositoryState>,
   };
 }
 export function getState(filename: string): BitbucketServerState {

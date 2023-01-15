@@ -7,6 +7,7 @@ import {
   PullRequest,
   PullRequestComment,
   PullRequestCommentId,
+  Reviewer,
 } from './Model';
 import axios, { AxiosRequestConfig } from 'axios';
 import log from '../utils/log';
@@ -29,7 +30,7 @@ export default class BitbucketService {
       : {};
   }
 
-  async getRepositories(projects: string[]): Promise<RepositorySlug[]> {
+  async getRepositories(projects: string[]): Promise<Repository[]> {
     const categories = [];
     for (let project of projects) {
       const url = `${this.settings.url}/projects/${project}/repos?limit=9999`;
@@ -39,9 +40,16 @@ export default class BitbucketService {
       categories.push(
         response.data.values.map((it: any) => {
           return {
-            projectSlug: project,
-            repoSlug: it.slug,
-          } as RepositorySlug;
+            slug: {
+              projectSlug: project,
+              repoSlug: it.slug,
+            },
+            id: it.id,
+            state: it.state,
+            cloneUrl: it.links.clone //
+              // Sort ssh before https
+              .sort((a: any, b: any) => b.name.localeCompare(a.name))[0].href,
+          } as Repository;
         })
       );
     }
@@ -52,18 +60,6 @@ export default class BitbucketService {
           `${b.projectSlug}-${b.repoSlug}`
         )
       );
-  }
-
-  async getRepository(repo: RepositorySlug): Promise<Repository> {
-    const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}?limit=9999`;
-    log('DEBUG', '> ' + url);
-    const response = await axios.get(url, this.config);
-    return {
-      slug: response.data.slug,
-      cloneUrl: response.data.links.clone //
-        // Sort ssh before https
-        .sort((a: any, b: any) => b.name.localeCompare(a.name))[0].href,
-    };
   }
 
   async getBranches(repo: RepositorySlug): Promise<Branch[]> {
@@ -84,34 +80,39 @@ export default class BitbucketService {
       );
   }
 
-  async getPullRequests(repo: RepositorySlug): Promise<string[]> {
+  async getPullRequests(repo: RepositorySlug): Promise<PullRequest[]> {
     const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests?limit=9999`;
     log('DEBUG', '> ' + url);
     const response = await axios.get(url, this.config);
     return response.data.values
       .map((data: any) => {
-        return data.id;
+        return {
+          id: data.id,
+          title: data.title,
+          state: data.state,
+          createdDate: data.createdDate,
+          updatedDate: data.updatedDate,
+          author: {
+            name: data.author.user.name,
+            emailAddress: data.author.user.emailAddress,
+            displayName: data.author.user.displayName,
+            slug: data.author.user.slug,
+          },
+          reviewers: data.reviewers.map((reviewer: any) => {
+            return {
+              user: {
+                displayName: reviewer.user.displayName,
+                emailAddress: reviewer.user.emailAddress,
+                name: reviewer.user.name,
+                slug: reviewer.user.slug,
+              },
+              role: reviewer.role,
+              status: reviewer.status,
+            } as Reviewer;
+          }),
+        } as PullRequest;
       })
       .sort();
-  }
-
-  async getPullRequest(repo: RepositorySlug, id: string): Promise<PullRequest> {
-    const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests/${id}`;
-    log('DEBUG', '> ' + url);
-    const response = await axios.get(url, this.config);
-    return {
-      id: response.data.id,
-      title: response.data.title,
-      state: response.data.state,
-      createdDate: response.data.createdDate,
-      updatedDate: response.data.updatedDate,
-      author: {
-        name: response.data.author.user.name,
-        emailAddress: response.data.author.user.emailAddress,
-        displayName: response.data.author.user.displayName,
-        slug: response.data.author.user.slug,
-      },
-    } as PullRequest;
   }
 
   async getCommit(repo: RepositorySlug, commit: string): Promise<Commit> {
