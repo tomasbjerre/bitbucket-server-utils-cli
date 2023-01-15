@@ -50,6 +50,7 @@ const program = new Command()
     'Milliseconds to sleep between HTTP requests.',
     '300'
   )
+  .option('-dr, --dry-run', 'Dry run, no POST/PUT/DELETE requests.', false)
   /**
    * Gather state
    */
@@ -96,6 +97,8 @@ log('DEBUG', options);
 const bitbucketService = new BitbucketService({
   personalAccessToken: options.accessToken,
   url: options.url,
+  sleepTime: options.sleepTime,
+  dryRun: options.dryRun,
 });
 
 if (options.gatherState) {

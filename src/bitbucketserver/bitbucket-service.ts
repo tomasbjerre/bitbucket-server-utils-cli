@@ -11,6 +11,7 @@ import {
 } from './Model';
 import axios, { AxiosRequestConfig } from 'axios';
 import log from '../utils/log';
+import sleep from '../utils/sleep';
 
 export default class BitbucketService {
   private config: AxiosRequestConfig;
@@ -36,6 +37,7 @@ export default class BitbucketService {
       const url = `${this.settings.url}/projects/${project}/repos?limit=9999`;
       log('DEBUG', '> ' + url);
       const response = await axios.get(url, this.config);
+      await sleep(this.settings.sleepTime);
       //log('DEBUG','response: ' + JSON.stringify(response.data));
       categories.push(
         response.data.values.map((it: any) => {
@@ -66,6 +68,7 @@ export default class BitbucketService {
     const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/branches?limit=9999`;
     log('DEBUG', '> ' + url);
     const response = await axios.get(url, this.config);
+    await sleep(this.settings.sleepTime);
     return response.data.values
       .map((data: any) => {
         return {
@@ -84,6 +87,7 @@ export default class BitbucketService {
     const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests?limit=9999`;
     log('DEBUG', '> ' + url);
     const response = await axios.get(url, this.config);
+    await sleep(this.settings.sleepTime);
     return response.data.values
       .map((data: any) => {
         return {
@@ -123,6 +127,7 @@ export default class BitbucketService {
     const url = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/commits/${commit}`;
     log('DEBUG', '> ' + url);
     const response = await axios.get(url, this.config);
+    await sleep(this.settings.sleepTime);
     return {
       displayId: response.data.displayId,
       author: {
@@ -142,6 +147,7 @@ export default class BitbucketService {
     const urlActivities = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests/${pullRequest}/activities?limit=9999`;
     log('DEBUG', '> ' + urlActivities);
     const response = await axios.get(urlActivities, this.config);
+    await sleep(this.settings.sleepTime);
     return response.data.values
       .filter((activity: any) => {
         return (
@@ -160,7 +166,10 @@ export default class BitbucketService {
     try {
       const version = comment.version ? `?version=${comment.version}` : '';
       const urlDelete = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests/${pullRequest}/comments/${comment.id}${version}`;
-      await axios.delete(urlDelete, this.config);
+      if (!this.settings.dryRun) {
+        await axios.delete(urlDelete, this.config);
+      }
+      await sleep(this.settings.sleepTime);
     } catch (e) {
       log(
         'DEBUG',
@@ -225,6 +234,9 @@ export default class BitbucketService {
       text: commentMessage,
     };
     log('DEBUG', '> ' + commentsUrl);
-    await axios.post(commentsUrl, postContent, this.config);
+    if (!this.settings.dryRun) {
+      await axios.post(commentsUrl, postContent, this.config);
+    }
+    await sleep(this.settings.sleepTime);
   }
 }

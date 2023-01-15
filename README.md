@@ -138,23 +138,27 @@ npm bitbucket-server-utils-cli \
 
 ```shell
 Options:
-  -at, --access-token <token>                      Bitbucket Server access token
-  -u, --url <url>                                  Bitbucket Server to use for REST integration (https://bitbucket-server/rest/api/latest)
-  -p, --projects <projects>                        Bitbucket Server projects. Example: PROJ_1,PROJ_2,PROJ_3
+  -at, --access-token <token>                                   Bitbucket Server access token
+  -u, --url <url>                                               Bitbucket Server to use for REST integration
+                                                                (https://bitbucket-server/rest/api/latest)
+  -p, --projects <projects>                                     Bitbucket Server projects. Example: PROJ_1,PROJ_2,PROJ_3
   -rs, --repository-slug <rs>
   -prid, --pull-request <prid>
   -prcid, --pull-request-comment-id <id>
   -prcv, --pull-request-comment-version <version>
-  -sf, --state-file <filename>                     File to read, and write, state to.
-  -t, --template <string>                          String containing Handlebars template.
-  -sev, --severity <rs>                            BLOCKER or NORMAL (default: "NORMAL")
-  -ck, --comment-key <rs>                          Some string that identifies the comment. Will ensure same comment is not re-posted if
-                                                   unchanged and replaced if changed.
-  --log-level <level>                              Log level DEBUG, INFO or ERROR (default: "INFO")
-  -gss, --sleep-time <milliseconds>                Milliseconds to sleep between HTTP requests. (default: "300")
-  -gs, --gather-state                              Gather state from Bitbucket Server and store it in a file.
-  -fc, --format-string                             Format a string by rendering a Handlebars-template with the state as context.
-  -pprc, --post-pull-request-comment <comment>     Post a pull-request comment
-  -dprc, --delete-pull-request-comment             Delete pull-request comment with given ID
-  -h, --help                                       display help for command
+  -sf, --state-file <filename>                                  File to read, and write, state to.
+  -t, --template <string>                                       String containing Handlebars template.
+  -sev, --severity <rs>                                         BLOCKER or NORMAL (default: "NORMAL")
+  -ck, --comment-key <rs>                                       Some string that identifies the comment. Will ensure same comment is not
+                                                                re-posted if unchanged and replaced if changed.
+  --log-level <level>                                           Log level DEBUG, INFO or ERROR (default: "INFO")
+  -gss, --sleep-time <milliseconds>                             Milliseconds to sleep between HTTP requests. (default: "300")
+  -dr, --dry-run                                                Dry run, no POST/PUT/DELETE requests. (default: false)
+  -gs, --gather-state                                           Gather state from Bitbucket Server and store it in a file.
+  -fc, --format-string                                          Format a string by rendering a Handlebars-template with the state as
+                                                                context.
+  -pprc, --post-pull-request-comment <comment>                  Post a pull-request comment
+  -pprciopr, --post-pull-request-comment-if-open-pull-requests  Post pull-request comment if author has open pull-requests to review
+  -dprc, --delete-pull-request-comment                          Delete pull-request comment with given ID
+  -h, --help                                                    display help for command
 ```

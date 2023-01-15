@@ -1,7 +1,5 @@
 import BitbucketService from '../bitbucketserver/bitbucket-service';
-import { PullRequest } from '../bitbucketserver/Model';
 import log from '../utils/log';
-import sleep from '../utils/sleep';
 import { BitbucketServerState } from './Model';
 import { getEmptyState } from './storage';
 
@@ -18,7 +16,6 @@ export default async function gatherState(
   );
 
   const repositories = await bitbucketService.getRepositories(options.projects);
-  await sleep(sleepTime);
   for (let repoIndex = 0; repoIndex < repositories.length; repoIndex++) {
     const repository = repositories[repoIndex];
     log(
@@ -36,7 +33,6 @@ export default async function gatherState(
       pullRequests,
       repository: repository,
     };
-    await sleep(sleepTime);
   }
   return state;
 }

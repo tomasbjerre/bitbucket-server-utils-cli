@@ -1,6 +1,8 @@
 export interface BitbucketServer {
   personalAccessToken: string;
   url: string;
+  sleepTime: number;
+  dryRun: boolean;
 }
 
 export interface RepositorySlug {
