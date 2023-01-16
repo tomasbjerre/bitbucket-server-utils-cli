@@ -2,6 +2,24 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.11.0 (2023-01-16)
+
+### Features
+
+-  helpers ([3da85](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/3da85b7d3dbc35d) Tomas Bjerre)  
+
+### Bug Fixes
+
+-  remove duplicated state ([d9f56](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/d9f568c6ad91d7a) Tomas Bjerre)  
+
+### Other changes
+
+**1.11.0**
+
+
+[b3b21](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/b3b21ae76d95049) Tomas Bjerre *2023-01-16 02:13:44*
+
+
 ## v1.10.0 (2023-01-15)
 
 ### Features
