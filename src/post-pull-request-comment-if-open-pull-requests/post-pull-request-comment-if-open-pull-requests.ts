@@ -82,6 +82,10 @@ function pullRequestsToReviewBy(
     .flatMap((it) => it.pullRequests)
     .filter((it) => it.author.slug != authorSlug)
     .filter((it) =>
-      it.reviewers.find((user) => user.user.slug == authorSlug && !user.status)
+      it.reviewers.find(
+        (reviewer) =>
+          reviewer.user.slug == authorSlug &&
+          (!reviewer.status || reviewer.status == 'UNAPPROVED')
+      )
     );
 }
