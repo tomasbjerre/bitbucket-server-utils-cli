@@ -1,9 +1,13 @@
 import { getState } from '../state/storage';
-import renderString from '../templating/render-string';
+import renderString from '../utils/render-string';
 
-export default async function formatString(options: any) {
-  const templateString = options.template;
-  const context = getState(options.stateFile);
-  const rendered = renderString(context, templateString);
+export default function formatString(options: any) {
+  const rendered = getFormattedString(options);
   console.log(rendered);
+}
+
+export function getFormattedString(options: any) {
+  const template = options.template;
+  const state = getState(options.stateFile);
+  return renderString({ state, context: state, template });
 }

@@ -2,7 +2,8 @@
   "name": "bitbucket-server-utils-cli",
   "version": "1.10.0",
   "scripts": {
-    "build": "rm -rf lib && npm run format && mkdir lib && tsc -p .",
+    "build": "rm -rf lib && npm run format && mkdir lib && tsc -p . && npm run test",
+    "test": "jest test -u",
     "format": "prettier --write .",
     "release": "npm run set-version; npm run build && npm publish && npm run changelog",
     "set-version": "npm version $(npx git-changelog-command-line --print-next-version)",
@@ -20,7 +21,9 @@
     "@types/glob": "^7.1.1",
     "@types/jest": "^25.2.1",
     "@types/node": "^16.9.1",
+    "jest": "^29.3.1",
     "prettier": "^2.0.5",
+    "ts-jest": "^29.0.5",
     "ts-node": "^8.9.0",
     "typescript": "^4.5.4"
   },
@@ -33,5 +36,12 @@
   "keywords": [
     "bitbucket-server"
   ],
-  "license": "Apache 2"
+  "license": "Apache 2",
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testRegex": "/__tests__/.*\\.spec\\.ts$"
+  }
 }

@@ -3,7 +3,7 @@ import { PullRequest } from '../bitbucketserver/Model';
 import { getState } from '../state/storage';
 import log from '../utils/log';
 import { BitbucketServerState } from '../state/Model';
-import renderString from '../templating/render-string';
+import renderString from '../utils/render-string';
 
 interface Context {
   authorPullRequest: PullRequest;
@@ -56,7 +56,7 @@ export default async function postPullRequestCommentIfOpenPullRequests(
               authorPullRequest,
               pullRequests,
             };
-            const message = renderString(context, template);
+            const message = renderString({ state, context, template });
             bitbucketService.postPullRequestComment({
               message,
               repo: {

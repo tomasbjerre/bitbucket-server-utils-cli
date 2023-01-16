@@ -15,8 +15,8 @@
       "id": "refs/heads/some-feature",
       "displayId": "some-feature",
       "type": "BRANCH",
-      "latestCommit": "ssdfsdfsdfsdfsdfdf",
-      "latestChangeset": "ssdfsdfsdfsdfsdfdf",
+      "latestCommit": "d9f568c6ad91d7a56a4860ecc15c1f4edacf4d4a",
+      "latestChangeset": "d9f568c6ad91d7a56a4860ecc15c1f4edacf4d4a",
       "isDefault": false
     }
   ],
