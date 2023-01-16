@@ -2,6 +2,20 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.12.0 (2023-01-16)
+
+### Features
+
+-  ifEqual ([7fb30](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/7fb30c11bcce297) Tomas Bjerre)  
+
+### Other changes
+
+**1.12.0**
+
+
+[e499e](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/e499ea72e0315f7) Tomas Bjerre *2023-01-16 02:45:59*
+
+
 ## v1.11.1 (2023-01-16)
 
 ### Bug Fixes
