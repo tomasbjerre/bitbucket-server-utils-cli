@@ -64,7 +64,7 @@ export default async function postPullRequestCommentIfOpenPullRequests(
                 repoSlug: authorPullRequest.repository.repoSlug,
               },
               pullRequest: authorPullRequest.id,
-              severity: 'BLOCKER',
+              severity: options.severity,
               commentKey: `<comment-key has-open-pull-requests-to-review-${authorPullRequest.author.slug}>`,
             });
           }

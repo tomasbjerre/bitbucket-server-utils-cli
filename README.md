@@ -131,6 +131,7 @@ npx bitbucket-server-utils-cli \
   --url http://localhost:8080/rest/api/latest \
   --access-token asd...asd \
   --state-file /tmp/some-file.json \
+  --severity BLOCKER \
   --template "$template"
 ```
 
