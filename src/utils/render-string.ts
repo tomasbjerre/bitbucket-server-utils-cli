@@ -22,6 +22,13 @@ export default function renderString(opts: RenderStringOpts) {
       }
       throw Error(`No such commitId ${commitIdContext}`);
     });
+    Handlebars.registerHelper('ifEqual', (a, b, options) => {
+      if (a == b) {
+        return options.fn(this);
+      } else {
+        return options.inverse(this);
+      }
+    });
 
     const templateHandlebars = Handlebars.compile(opts.template);
     log(

@@ -15,6 +15,10 @@ it('should render string with helpers', () => {
   {{#each repositories}}
     Repository: {{repository.slug.projectSlug}} / {{repository.slug.repoSlug}}
 
+    {{#ifEqual repository.slug.repoSlug "repo_2"}}
+      This is Repo 2
+    {{/ifEqual}}
+
     {{#each branches}}
       Branch: {{displayId}}
     {{/each}}
@@ -42,6 +46,7 @@ it('should render string with helpers', () => {
 
         Repository: PROJ_1 / repo_1
 
+
           Branch: master
           Branch: some-feature
 
@@ -52,6 +57,8 @@ it('should render string with helpers', () => {
           From: 222222d1d6c87172cf2dea0f3c18df6ed687ead4
             Commit author slug: 123123123
         Repository: PROJ_1 / repo_2
+
+          This is Repo 2
 
           Branch: master
 
