@@ -2,6 +2,20 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.12.1 (2023-01-16)
+
+### Bug Fixes
+
+-  correcting filter of unapproved ([961b1](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/961b127809979b5) Tomas Bjerre)  
+
+### Other changes
+
+**1.12.1**
+
+
+[e0338](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/e0338c7a0060bc8) Tomas Bjerre *2023-01-16 14:13:25*
+
+
 ## v1.12.0 (2023-01-16)
 
 ### Features
