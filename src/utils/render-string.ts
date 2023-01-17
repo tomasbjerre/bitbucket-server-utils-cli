@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import { BitbucketServerState } from '../state/Model';
 import log from './log';
-import registerHelpers from './registerHelpers';
+import registerHelpers from './register-helpers';
 
 export interface RenderStringOpts {
   state: BitbucketServerState;

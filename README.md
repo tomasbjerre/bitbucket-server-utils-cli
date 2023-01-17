@@ -46,7 +46,7 @@ npx bitbucket-server-utils-cli \
 
 ### Format string
 
-Format a string by rendering a [Handlebars-template](https://handlebarsjs.com/) with the state as context.
+Format a string by rendering a [Handlebars-template](https://handlebarsjs.com/) with the [state as context](https://github.com/tomasbjerre/bitbucket-server-utils-cli/blob/master/src/state/Model.ts).
 
 ```sh
 template=$(cat <<-END
@@ -116,7 +116,7 @@ npx bitbucket-server-utils-cli \
 
 ### Comment any pull-request where the author has pull-requests to review
 
-A comment with specific message to authors who has other pull-requests to review.
+A comment with specific message to authors who has other pull-requests to review. [The context](https://github.com/tomasbjerre/bitbucket-server-utils-cli/blob/master/src/post-pull-request-comment-if-open-pull-requests/post-pull-request-comment-if-open-pull-requests.ts) contains the author and the pull-requests.
 
 ```sh
 template=$(cat <<-END
