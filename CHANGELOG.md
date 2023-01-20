@@ -2,6 +2,25 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.13.0 (2023-01-20)
+
+### Features
+
+-  username and password ([67ca0](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/67ca059058d9d4e) Tomas Bjerre)  
+
+### Other changes
+
+**1.13.0**
+
+
+[31462](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/314624b2737dc8c) Tomas Bjerre *2023-01-20 15:35:14*
+
+**chore moving helpers to its own file**
+
+
+[1b1db](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/1b1db3e698ac3d5) Tomas Bjerre *2023-01-16 14:56:32*
+
+
 ## v1.12.1 (2023-01-16)
 
 ### Bug Fixes
