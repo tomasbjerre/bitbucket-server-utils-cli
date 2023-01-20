@@ -20,6 +20,8 @@ const program = new Command()
   .version(pkgJson.version)
   .command(pkgJson.name)
   .option('-at, --access-token <token>', 'Bitbucket Server access token')
+  .option('-u, --username <username>', 'Bitbucket Server username')
+  .option('-p, --password <password>', 'Bitbucket Server password')
   .option(
     '-u, --url <url>',
     'Bitbucket Server to use for REST integration (https://bitbucket-server/rest/api/latest)'
@@ -96,6 +98,8 @@ log('DEBUG', options);
 
 const bitbucketService = new BitbucketService({
   personalAccessToken: options.accessToken,
+  username: options.username,
+  password: options.password,
   url: options.url,
   sleepTime: options.sleepTime,
   dryRun: options.dryRun,

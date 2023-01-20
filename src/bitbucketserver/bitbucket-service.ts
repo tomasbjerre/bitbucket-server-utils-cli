@@ -13,6 +13,18 @@ import axios, { AxiosRequestConfig } from 'axios';
 import log from '../utils/log';
 import sleep from '../utils/sleep';
 
+function authString(settings: BitbucketServer): string {
+  if (settings.personalAccessToken) {
+    return `Bearer ${settings.personalAccessToken}`;
+  }
+  if (settings.username && settings.password) {
+    const userAndPass = `${settings.username}:${settings.password}`;
+    const authString = Buffer.from(userAndPass, 'binary').toString('base64');
+    return `Basic ${authString}`;
+  }
+  throw Error(`No credentials supplied`);
+}
+
 export default class BitbucketService {
   private config: AxiosRequestConfig;
 
@@ -21,11 +33,14 @@ export default class BitbucketService {
       JSON.stringify(settings)
     ) as BitbucketServer;
     maskedSettings.personalAccessToken = '<masked>';
+    maskedSettings.username = '<masked>';
+    maskedSettings.password = '<masked>';
     log('DEBUG', maskedSettings);
+    const authorization = authString(settings);
     this.config = settings.personalAccessToken
       ? {
           headers: {
-            Authorization: `Bearer ${settings.personalAccessToken}`,
+            Authorization: authorization,
           },
         }
       : {};

@@ -1,5 +1,7 @@
 export interface BitbucketServer {
   personalAccessToken: string;
+  username: string;
+  password: string;
   url: string;
   sleepTime: number;
   dryRun: boolean;

@@ -2,8 +2,6 @@
 
 [![NPM](https://img.shields.io/npm/v/bitbucket-server-utils-cli.svg?style=flat-square)](https://www.npmjs.com/package/bitbucket-server-utils-cli)
 
-**Work in progress.**
-
 Bitbucket Server utilities packaged as a standalone command line tool. Can be used in CI pipelines and similar things.
 
 Using [Bitbucket Server REST API](https://developer.atlassian.com/server/bitbucket/how-tos/command-line-rest/)
@@ -140,6 +138,8 @@ npx bitbucket-server-utils-cli \
 ```shell
 Options:
   -at, --access-token <token>                                   Bitbucket Server access token
+  -u, --username <username>                                     Bitbucket Server username
+  -p, --password <password>                                     Bitbucket Server password
   -u, --url <url>                                               Bitbucket Server to use for REST integration
                                                                 (https://bitbucket-server/rest/api/latest)
   -p, --projects <projects>                                     Bitbucket Server projects. Example: PROJ_1,PROJ_2,PROJ_3
