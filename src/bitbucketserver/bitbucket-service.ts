@@ -37,13 +37,11 @@ export default class BitbucketService {
     maskedSettings.password = '<masked>';
     log('DEBUG', maskedSettings);
     const authorization = authString(settings);
-    this.config = settings.personalAccessToken
-      ? {
-          headers: {
-            Authorization: authorization,
-          },
-        }
-      : {};
+    this.config = {
+      headers: {
+        Authorization: authorization,
+      },
+    };
   }
 
   async getRepositories(projects: string[]): Promise<Repository[]> {
