@@ -1,154 +1,154 @@
 {
-    "v1": {
-        "lastUpdated": 1674241288692,
-        "repositories": {
-            "PROJ_1-repo_1": {
-                "branches": [
-                    {
-                        "displayId": "master",
-                        "latestCommit": "222222d1d6c87172cf2dea0f3c18df6ed687ead4",
-                        "isDefault": true
-                    },
-                    {
-                        "displayId": "some-feature",
-                        "latestCommit": "d9f568c6ad91d7a56a4860ecc15c1f4edacf4d4a",
-                        "isDefault": false
-                    }
-                ],
-                "pullRequests": [
-                    {
-                        "id": 128,
-                        "title": "fixing stuff",
-                        "state": "OPEN",
-                        "createdDate": 1671701939747,
-                        "updatedDate": 1673340959000,
-                        "author": {
-                            "name": "345341",
-                            "emailAddress": "mmmmm@mycompany",
-                            "displayName": "m m m m m",
-                            "slug": "345341"
-                        },
-                        "repository": {
-                            "projectSlug": "PROJ_1",
-                            "repoSlug": "repo_1"
-                        },
-                        "reviewers": [
-                            {
-                                "user": {
-                                    "displayName": "Firstname Lastname",
-                                    "emailAddress": "firstname.lastname@mycompany",
-                                    "name": "123123123",
-                                    "slug": "123123123"
-                                },
-                                "role": "REVIEWER",
-                                "status": "APPROVED"
-                            }
-                        ],
-                        "fromRef": {
-                            "displayId": "gffghfgfghfgh",
-                            "latestCommit": "222222d1d6c87172cf2dea0f3c18df6ed687ead4"
-                        }
-                    },
-                    {
-                        "id": 129,
-                        "title": "fixing stuff 2",
-                        "state": "OPEN",
-                        "createdDate": 1671701939747,
-                        "updatedDate": 1673340959000,
-                        "author": {
-                            "name": "444441",
-                            "emailAddress": "mmmmm@mycompany",
-                            "displayName": "m m m m m",
-                            "slug": "444443"
-                        },
-                        "repository": {
-                            "projectSlug": "PROJ_1",
-                            "repoSlug": "repo_1"
-                        },
-                        "reviewers": [
-                            {
-                                "user": {
-                                    "displayName": "m m m m m",
-                                    "emailAddress": "mmmmm@mycompany",
-                                    "name": "345341",
-                                    "slug": "345341"
-                                },
-                                "role": "REVIEWER",
-                                "status": null
-                            }
-                        ],
-                        "fromRef": {
-                            "displayId": "gffghfgfghfgh",
-                            "latestCommit": "222222d1d6c87172cf2dea0f3c18df6ed687ead4"
-                        }
-                    }
-                ],
-                "repository": {
-                    "slug": {
-                        "projectSlug": "PROJ_1",
-                        "repoSlug": "repo_1"
-                    },
-                    "id": 712,
-                    "state": "AVAILABLE",
-                    "cloneUrl": "ssh://git@bitbucket-server:8080/PROJ_1/repo_1.git"
-                },
-                "commits": {
-                    "222222d1d6c87172cf2dea0f3c18df6ed687ead4": {
-                        "displayId": "11111113e79",
-                        "authorTimestamp": 1659332471000,
-                        "committerTimestamp": 1659332471000,
-                        "author": {
-                            "name": "123123123",
-                            "emailAddress": "firstname.lastname@mycompany",
-                            "displayName": "Firstname Lastname",
-                            "slug": "123123123"
-                        }
-                    },
-                    "d9f568c6ad91d7a56a4860ecc15c1f4edacf4d4a": {
-                        "displayId": "d9f568c6ad91",
-                        "authorTimestamp": 1659332471000,
-                        "committerTimestamp": 1659332471000,
-                        "author": {
-                            "name": "123123123",
-                            "emailAddress": "firstname.lastname@mycompany",
-                            "displayName": "Firstname Lastname",
-                            "slug": "123123123"
-                        }
-                    }
-                }
+  "v1": {
+    "lastUpdated": 1674241288692,
+    "repositories": {
+      "PROJ_1-repo_1": {
+        "branches": [
+          {
+            "displayId": "master",
+            "latestCommit": "222222d1d6c87172cf2dea0f3c18df6ed687ead4",
+            "isDefault": true
+          },
+          {
+            "displayId": "some-feature",
+            "latestCommit": "d9f568c6ad91d7a56a4860ecc15c1f4edacf4d4a",
+            "isDefault": false
+          }
+        ],
+        "pullRequests": [
+          {
+            "id": 128,
+            "title": "fixing stuff",
+            "state": "OPEN",
+            "createdDate": 1671701939747,
+            "updatedDate": 1673340959000,
+            "author": {
+              "name": "345341",
+              "emailAddress": "mmmmm@mycompany",
+              "displayName": "m m m m m",
+              "slug": "345341"
             },
-            "PROJ_1-repo_2": {
-                "branches": [
-                    {
-                        "displayId": "master",
-                        "latestCommit": "0d0e792b9abfe4d80222c1b7ed082a6b69ba96a8",
-                        "isDefault": true
-                    }
-                ],
-                "pullRequests": [],
-                "repository": {
-                    "slug": {
-                        "projectSlug": "PROJ_1",
-                        "repoSlug": "repo_2"
-                    },
-                    "id": 2298,
-                    "state": "AVAILABLE",
-                    "cloneUrl": "ssh://git@bitbucket-server:8080/PROJ_1/repo_2.git"
+            "repository": {
+              "projectSlug": "PROJ_1",
+              "repoSlug": "repo_1"
+            },
+            "reviewers": [
+              {
+                "user": {
+                  "displayName": "Firstname Lastname",
+                  "emailAddress": "firstname.lastname@mycompany",
+                  "name": "123123123",
+                  "slug": "123123123"
                 },
-                "commits": {
-                    "0d0e792b9abfe4d80222c1b7ed082a6b69ba96a8": {
-                        "displayId": "0d0e792b9ab",
-                        "authorTimestamp": 1659332471000,
-                        "committerTimestamp": 1659332471000,
-                        "author": {
-                            "name": "123123123",
-                            "emailAddress": "firstname.lastname@mycompany",
-                            "displayName": "Firstname Lastname",
-                            "slug": "123123123"
-                        }
-                    }
-                }
+                "role": "REVIEWER",
+                "status": "APPROVED"
+              }
+            ],
+            "fromRef": {
+              "displayId": "gffghfgfghfgh",
+              "latestCommit": "222222d1d6c87172cf2dea0f3c18df6ed687ead4"
             }
+          },
+          {
+            "id": 129,
+            "title": "fixing stuff 2",
+            "state": "OPEN",
+            "createdDate": 1671701939747,
+            "updatedDate": 1673340959000,
+            "author": {
+              "name": "444441",
+              "emailAddress": "mmmmm@mycompany",
+              "displayName": "m m m m m",
+              "slug": "444443"
+            },
+            "repository": {
+              "projectSlug": "PROJ_1",
+              "repoSlug": "repo_1"
+            },
+            "reviewers": [
+              {
+                "user": {
+                  "displayName": "m m m m m",
+                  "emailAddress": "mmmmm@mycompany",
+                  "name": "345341",
+                  "slug": "345341"
+                },
+                "role": "REVIEWER",
+                "status": null
+              }
+            ],
+            "fromRef": {
+              "displayId": "gffghfgfghfgh",
+              "latestCommit": "222222d1d6c87172cf2dea0f3c18df6ed687ead4"
+            }
+          }
+        ],
+        "repository": {
+          "slug": {
+            "projectSlug": "PROJ_1",
+            "repoSlug": "repo_1"
+          },
+          "id": 712,
+          "state": "AVAILABLE",
+          "cloneUrl": "ssh://git@bitbucket-server:8080/PROJ_1/repo_1.git"
+        },
+        "commits": {
+          "222222d1d6c87172cf2dea0f3c18df6ed687ead4": {
+            "displayId": "11111113e79",
+            "authorTimestamp": 1659332471000,
+            "committerTimestamp": 1659332471000,
+            "author": {
+              "name": "123123123",
+              "emailAddress": "firstname.lastname@mycompany",
+              "displayName": "Firstname Lastname",
+              "slug": "123123123"
+            }
+          },
+          "d9f568c6ad91d7a56a4860ecc15c1f4edacf4d4a": {
+            "displayId": "d9f568c6ad91",
+            "authorTimestamp": 1659332471000,
+            "committerTimestamp": 1659332471000,
+            "author": {
+              "name": "123123123",
+              "emailAddress": "firstname.lastname@mycompany",
+              "displayName": "Firstname Lastname",
+              "slug": "123123123"
+            }
+          }
         }
+      },
+      "PROJ_1-repo_2": {
+        "branches": [
+          {
+            "displayId": "master",
+            "latestCommit": "0d0e792b9abfe4d80222c1b7ed082a6b69ba96a8",
+            "isDefault": true
+          }
+        ],
+        "pullRequests": [],
+        "repository": {
+          "slug": {
+            "projectSlug": "PROJ_1",
+            "repoSlug": "repo_2"
+          },
+          "id": 2298,
+          "state": "AVAILABLE",
+          "cloneUrl": "ssh://git@bitbucket-server:8080/PROJ_1/repo_2.git"
+        },
+        "commits": {
+          "0d0e792b9abfe4d80222c1b7ed082a6b69ba96a8": {
+            "displayId": "0d0e792b9ab",
+            "authorTimestamp": 1659332471000,
+            "committerTimestamp": 1659332471000,
+            "author": {
+              "name": "123123123",
+              "emailAddress": "firstname.lastname@mycompany",
+              "displayName": "Firstname Lastname",
+              "slug": "123123123"
+            }
+          }
+        }
+      }
     }
+  }
 }

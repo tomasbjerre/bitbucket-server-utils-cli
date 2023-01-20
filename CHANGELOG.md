@@ -2,6 +2,20 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.13.1 (2023-01-20)
+
+### Bug Fixes
+
+-  username/password login ([c0fde](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/c0fde168a64fc6b) Tomas Bjerre)  
+
+### Other changes
+
+**1.13.1**
+
+
+[b11d5](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/b11d57d179c2e37) Tomas Bjerre *2023-01-20 19:02:26*
+
+
 ## v1.13.0 (2023-01-20)
 
 ### Features
