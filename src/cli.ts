@@ -48,7 +48,7 @@ const program = new Command()
     'INFO' as LOG_LEVEL
   )
   .option(
-    '-gss, --sleep-time <milliseconds>',
+    '-s, --sleep-time <milliseconds>',
     'Milliseconds to sleep between HTTP requests.',
     '300'
   )

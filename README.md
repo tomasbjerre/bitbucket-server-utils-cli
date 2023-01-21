@@ -153,7 +153,7 @@ Options:
   -ck, --comment-key <rs>                                       Some string that identifies the comment. Will ensure same comment is not
                                                                 re-posted if unchanged and replaced if changed.
   --log-level <level>                                           Log level DEBUG, INFO or ERROR (default: "INFO")
-  -gss, --sleep-time <milliseconds>                             Milliseconds to sleep between HTTP requests. (default: "300")
+  -s, --sleep-time <milliseconds>                             Milliseconds to sleep between HTTP requests. (default: "300")
   -dr, --dry-run                                                Dry run, no POST/PUT/DELETE requests. (default: false)
   -gs, --gather-state                                           Gather state from Bitbucket Server and store it in a file.
   -fc, --format-string                                          Format a string by rendering a Handlebars-template with the state as

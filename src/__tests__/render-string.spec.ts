@@ -38,7 +38,7 @@ it('should render string with helpers', () => {
     "
       year: 2023
       month: 1
-      day: 20
+      day: 21
 
       commit: 
         Commit author slug: 123123123

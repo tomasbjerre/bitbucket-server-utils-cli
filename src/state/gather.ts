@@ -1,21 +1,20 @@
 import BitbucketService from '../bitbucketserver/bitbucket-service';
 import { Commit } from '../bitbucketserver/Model';
 import log from '../utils/log';
-import { BitbucketServerState } from './Model';
+import sortRecord from '../utils/sort-record';
+import { BitbucketServerState, RepositoryState } from './Model';
 import { getEmptyState } from './storage';
 
 export default async function gatherState(
   bitbucketService: BitbucketService,
   options: any
 ): Promise<BitbucketServerState> {
-  const state: BitbucketServerState = getEmptyState();
-
   const sleepTime = parseInt(options.sleepTime);
   log(
     'INFO',
     `Using ${options.stateFile} and waiting ${sleepTime}ms between HTTP requests.`
   );
-
+  const stateRepositories: Record<string, RepositoryState> = {};
   const repositories = await bitbucketService.getRepositories(options.projects);
   for (let repoIndex = 0; repoIndex < repositories.length; repoIndex++) {
     const repository = repositories[repoIndex];
@@ -44,12 +43,14 @@ export default async function gatherState(
         branch.latestCommit
       );
     }
-    state.repositories[key] = {
+    stateRepositories[key] = {
       branches,
       pullRequests,
       repository,
-      commits,
+      commits: sortRecord(commits),
     };
   }
+  const state: BitbucketServerState = getEmptyState();
+  state.repositories = sortRecord(stateRepositories);
   return state;
 }
