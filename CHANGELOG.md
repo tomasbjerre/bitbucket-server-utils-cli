@@ -2,6 +2,20 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.14.0 (2023-01-21)
+
+### Features
+
+-  sorting json ([3ede7](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/3ede78a83417f78) Tomas Bjerre)  
+
+### Other changes
+
+**1.14.0**
+
+
+[e98a1](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/e98a176e5c63161) Tomas Bjerre *2023-01-21 16:32:39*
+
+
 ## v1.13.1 (2023-01-20)
 
 ### Bug Fixes
