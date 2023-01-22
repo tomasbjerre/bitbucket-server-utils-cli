@@ -2,6 +2,20 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.15.0 (2023-01-22)
+
+### Features
+
+-  length helper ([fcdd7](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/fcdd78f95d3a019) Tomas Bjerre)  
+
+### Other changes
+
+**1.15.0**
+
+
+[d4ec3](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/d4ec38636bc0e99) Tomas Bjerre *2023-01-22 18:11:48*
+
+
 ## v1.14.0 (2023-01-21)
 
 ### Features
