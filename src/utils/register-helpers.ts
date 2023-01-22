@@ -25,4 +25,12 @@ export default function registerHelpers(state: BitbucketServerState) {
       return options.inverse(this);
     }
   });
+
+  Handlebars.registerHelper('length', (it) => {
+    const typeOf = typeof it;
+    if (typeOf == 'object') {
+      return Object.keys(it).length;
+    }
+    return it.length;
+  });
 }
