@@ -1,7 +1,6 @@
 import { BitbucketServerState, RepositoryState } from './Model';
 import log from '../utils/log';
 import fs from 'fs';
-import { Commit } from '../bitbucketserver/Model';
 
 interface StorageState {
   v1: BitbucketServerState;
