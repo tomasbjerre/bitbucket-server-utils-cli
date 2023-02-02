@@ -2,6 +2,50 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.16.0 (2023-02-02)
+
+### Features
+
+-  bump version ([916c8](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/916c8abcf4f382d) Tomas Bjerre)  
+
+### Bug Fixes
+
+-  bumping version ([2c311](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/2c311082230aac0) Tomas Bjerre)  
+-  npe when deleting ([09fab](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/09fabc88bff8a2e) Tomas Bjerre)  
+
+### Other changes
+
+**1.16.0**
+
+
+[9b77d](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/9b77d984fe4cfa6) Tomas Bjerre (GitHub Action) *2023-02-02 14:19:02*
+
+**Update package.json**
+
+
+[290fa](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/290fa16c99e7bb0) Tomas Bjerre *2023-02-02 14:11:32*
+
+**Update release_package.yml**
+
+
+[1be97](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/1be970a327abe4e) Tomas Bjerre *2023-02-02 14:07:04*
+
+**Update release_package.yml**
+
+
+[80323](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/80323283e4e3328) Tomas Bjerre *2023-02-02 13:59:21*
+
+**Create release_package.yml**
+
+
+[3eeaf](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/3eeaf26d42ff946) Tomas Bjerre *2023-02-02 13:55:23*
+
+**Update post-pull-request-comment-if-open-pull-requests.ts**
+
+
+[26d49](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/26d4927f664aadf) Tomas Bjerre *2023-02-02 07:05:01*
+
+
 ## v1.15.0 (2023-01-22)
 
 ### Features
@@ -289,6 +333,8 @@ Changelog of bitbucket-server-utils-cli.
 ### Features
 
 -  release-scripts ([f4a7c](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/f4a7c978fecee1b) Tomas Bjerre)  
+-  release-scripts ([045f7](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/045f71b1fc85b76) Tomas Bjerre)  
+-  comment pr ([7a64d](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/7a64d481ee7496c) Tomas Bjerre)  
 
 ### Other changes
 
@@ -297,13 +343,6 @@ Changelog of bitbucket-server-utils-cli.
 
 [c10e1](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/c10e1061a319a4a) Tomas Bjerre *2023-01-13 17:54:33*
 
-
-## 1.1.0 (2023-01-13)
-
-### Features
-
--  release-scripts ([045f7](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/045f71b1fc85b76) Tomas Bjerre)  
--  comment pr ([7a64d](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/7a64d481ee7496c) Tomas Bjerre)  
 
 ## v1.0.2 (2023-01-12)
 
