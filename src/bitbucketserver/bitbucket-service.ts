@@ -228,7 +228,7 @@ export default class BitbucketService {
         config.commentKey
       );
       const willDelete = existingComments.map((comment: any) => {
-        if (comment.text.trim().indexOf(commentMessage.trim()) != -1) {
+        if ((comment.text?.trim() ?? '').indexOf(commentMessage.trim()) != -1) {
           identicalCommentFound = true;
         }
         return comment;
