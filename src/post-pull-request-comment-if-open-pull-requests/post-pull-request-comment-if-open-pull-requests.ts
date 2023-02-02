@@ -39,9 +39,11 @@ export default async function postPullRequestCommentIfOpenPullRequests(
           if (pullRequests.length > 0) {
             log(
               'INFO',
-              `        Commenting ${authorPullRequest.author.displayName} (${
-                authorPullRequest.author.slug
-              }) should review ${pullRequests
+              `        Commenting ${authorPullRequest.repository.projectSlug}/${
+                authorPullRequest.repository.repoSlug
+              }/${authorPullRequest.id} by ${
+                authorPullRequest.author.displayName
+              } (${authorPullRequest.author.slug}) should review ${pullRequests
                 .map(
                   (it) =>
                     it.repository.projectSlug +
