@@ -7,7 +7,7 @@
     "format": "prettier --write .",
     "release": "npm run set-version; npm run build && npm publish && npm run changelog",
     "set-version": "npm version $(npx git-changelog-command-line --print-next-version)",
-    "changelog": "npx git-changelog-command-line -of CHANGELOG.md && git commit -a -m 'chore: changelog' && git push --follow-tags",
+    "changelog": "npx git-changelog-command-line -of CHANGELOG.md && git add CHANGELOG.md && git commit -m 'chore: changelog' && git push --follow-tags",
     "start": "npm run build && node ./lib/cli.js",
     "mock": "npx wiremock --root-dir wiremock --verbose"
   },
