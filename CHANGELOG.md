@@ -2,6 +2,20 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.17.0 (2023-02-05)
+
+### Features
+
+-  --ignore-authors-slug ([80967](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/80967332fd99c3e) Tomas Bjerre)  
+
+### Other changes
+
+**1.17.0**
+
+
+[61b76](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/61b7672ef50cf10) Tomas Bjerre (GitHub Action) *2023-02-05 07:22:23*
+
+
 ## v1.16.0 (2023-02-02)
 
 ### Features
