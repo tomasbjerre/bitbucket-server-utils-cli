@@ -130,6 +130,7 @@ npx bitbucket-server-utils-cli \
   --access-token asd...asd \
   --state-file /tmp/some-file.json \
   --severity BLOCKER \
+  --ignore-authors-slug optional,list,of,slugs,to,ignore \
   --template "$template"
 ```
 
@@ -155,6 +156,7 @@ Options:
   --log-level <level>                                           Log level DEBUG, INFO or ERROR (default: "INFO")
   -s, --sleep-time <milliseconds>                               Milliseconds to sleep between HTTP requests. (default: "300")
   -dr, --dry-run                                                Dry run, no POST/PUT/DELETE requests. (default: false)
+  -ias, --ignore-authors-slug <authors>                         Ignore authors by slug. Example: abc,def,fgh
   -gs, --gather-state                                           Gather state from Bitbucket Server and store it in a file.
   -fc, --format-string                                          Format a string by rendering a Handlebars-template with the state as
                                                                 context.

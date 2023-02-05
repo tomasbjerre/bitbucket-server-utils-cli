@@ -53,37 +53,31 @@ const program = new Command()
     '300'
   )
   .option('-dr, --dry-run', 'Dry run, no POST/PUT/DELETE requests.', false)
+  .option(
+    '-ias, --ignore-authors-slug <authors>',
+    'Ignore authors by slug. Example: abc,def,fgh',
+    commaSeparatedList,
+    []
+  )
   /**
-   * Gather state
+   * Main actions
    */
   .option(
     '-gs, --gather-state',
     'Gather state from Bitbucket Server and store it in a file.'
   )
-  /**
-   * Format string
-   */
   .option(
     '-fc, --format-string',
     'Format a string by rendering a Handlebars-template with the state as context.'
   )
-  /**
-   * Post pull-request comment
-   */
   .option(
     '-pprc, --post-pull-request-comment <comment>',
     'Post a pull-request comment'
   )
-  /**
-   * Post pull-request comment if author has open pull-requests to review
-   */
   .option(
     '-pprciopr, --post-pull-request-comment-if-open-pull-requests',
     'Post pull-request comment if author has open pull-requests to review'
   )
-  /**
-   * Delete pull-request comment
-   */
   .option(
     '-dprc, --delete-pull-request-comment',
     'Delete pull-request comment with given ID'
