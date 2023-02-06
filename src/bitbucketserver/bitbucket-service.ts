@@ -226,11 +226,16 @@ export default class BitbucketService {
         config.pullRequest,
         config.commentKey
       );
-      const notIdentialComments = existingComments
-      .filter((comment: PullRequestCommentId) => (comment.text?.trim() ?? '').indexOf(commentMessage.trim()) == -1);
+      const notIdentialComments = existingComments.filter(
+        (comment: PullRequestCommentId) =>
+          (comment.text?.trim() ?? '').indexOf(commentMessage.trim()) == -1
+      );
 
       for (let comment of notIdentialComments) {
-        log('DEBUG', `Deleting not identical comment ${comment}`);
+        log(
+          'DEBUG',
+          `Deleting not identical comment ${JSON.stringify(comment)}`
+        );
         await this.deletePullRequestCommentById(
           config.repo,
           config.pullRequest,
