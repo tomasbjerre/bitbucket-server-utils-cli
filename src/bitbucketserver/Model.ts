@@ -69,4 +69,5 @@ export interface PullRequestComment {
 export interface PullRequestCommentId {
   id: string;
   version?: string;
+  text?: string;
 }
