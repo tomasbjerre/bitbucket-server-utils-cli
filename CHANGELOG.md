@@ -2,6 +2,21 @@
 
 Changelog of bitbucket-server-utils-cli.
 
+## v1.17.1 (2023-02-06)
+
+### Bug Fixes
+
+-  text in comment ([1773a](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/1773af9a96d1cfd) Tomas Bjerre)  
+-  deleting old comments ([712ea](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/712ea106777ea55) Tomas Bjerre)  
+
+### Other changes
+
+**1.17.1**
+
+
+[cd08f](https://github.com/tomasbjerre/bitbucket-server-utils-cli/commit/cd08f1cba7e4d17) Tomas Bjerre (GitHub Action) *2023-02-06 06:45:09*
+
+
 ## v1.17.0 (2023-02-05)
 
 ### Features
