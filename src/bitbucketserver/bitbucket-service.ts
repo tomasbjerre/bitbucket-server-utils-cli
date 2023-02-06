@@ -175,7 +175,7 @@ export default class BitbucketService {
           activity.comment.text.indexOf(commentKey) != -1
         );
       })
-      .filter((activity: any) => activity.comment);
+      .map((activity: any) => activity.comment);
   }
 
   async deletePullRequestCommentById(
@@ -208,8 +208,8 @@ export default class BitbucketService {
       pullRequest,
       commentKey
     );
-    log('DEBUG', `Deleting old comments ${existingComments}`);
     for (let comment of existingComments) {
+      log('DEBUG', `Deleting old comment ${comment.id}`);
       await this.deletePullRequestCommentById(repo, pullRequest, comment);
     }
   }
@@ -217,7 +217,6 @@ export default class BitbucketService {
   async postPullRequestComment(config: PullRequestComment): Promise<void> {
     log('DEBUG', `Commenting ${JSON.stringify(config)}`);
     let commentMessage = config.message;
-    let identicalCommentFound = false;
 
     if (config.commentKey) {
       commentMessage = config.message + '\n\n' + config.commentKey;
@@ -227,24 +226,21 @@ export default class BitbucketService {
         config.pullRequest,
         config.commentKey
       );
-      const willDelete = existingComments.map((comment: any) => {
-        if ((comment.text?.trim() ?? '').indexOf(commentMessage.trim()) != -1) {
-          identicalCommentFound = true;
-        }
-        return comment;
-      });
-      if (identicalCommentFound) {
-        log('DEBUG', 'Identical comment exists, will not comment again.');
-        return;
-      }
+      const notIdentialComments = existingComments
+      .filter((comment: PullRequestCommentId) => (comment.text?.trim() ?? '').indexOf(commentMessage.trim()) == -1);
 
-      log('DEBUG', `Deleting old comments ${willDelete}`);
-      for (let comment of willDelete) {
+      for (let comment of notIdentialComments) {
+        log('DEBUG', `Deleting not identical comment ${comment}`);
         await this.deletePullRequestCommentById(
           config.repo,
           config.pullRequest,
           comment
         );
+      }
+
+      if (notIdentialComments.length != existingComments.length) {
+        log('DEBUG', `Identical comment found, not commenting again`);
+        return;
       }
     }
 
