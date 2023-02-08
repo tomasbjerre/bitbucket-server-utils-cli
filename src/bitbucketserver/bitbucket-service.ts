@@ -183,18 +183,14 @@ export default class BitbucketService {
     pullRequest: string,
     comment: PullRequestCommentId
   ): Promise<void> {
+    const urlDelete = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests/${pullRequest}/comments/${comment.id}?version=${comment.version}`;
     try {
-      const version = comment.version ? `?version=${comment.version}` : '';
-      const urlDelete = `${this.settings.url}/projects/${repo.projectSlug}/repos/${repo.repoSlug}/pull-requests/${pullRequest}/comments/${comment.id}${version}`;
       if (!this.settings.dryRun) {
         await axios.delete(urlDelete, this.config);
       }
       await sleep(this.settings.sleepTime);
     } catch (e) {
-      log(
-        'DEBUG',
-        `Was unable to delete ${comment.id} ${comment.version} ${e}`
-      );
+      log('ERROR', `Was unable to delete ${urlDelete} ${e}`);
     }
   }
 
