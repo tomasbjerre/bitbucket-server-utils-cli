@@ -33,6 +33,11 @@ const program = new Command()
   )
   .option('-rs, --repository-slug <rs>')
   .option('-prid, --pull-request <prid>')
+  .option(
+    '-prtf, --pull-request-title-filter <regexp>',
+    'Only include pull requests with title matching this regexp.',
+    '.*'
+  )
   .option('-prcid, --pull-request-comment-id <id>')
   .option('-prcv, --pull-request-comment-version <version>')
   .option('-sf, --state-file <filename>', 'File to read, and write, state to.')

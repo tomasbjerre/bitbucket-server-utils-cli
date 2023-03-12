@@ -126,6 +126,7 @@ END
 )
 npx bitbucket-server-utils-cli \
   --post-pull-request-comment-if-open-pull-requests \
+  --pull-request-title-filter ^\(?\!WIP:\).*
   --url http://localhost:8080/rest/api/latest \
   --access-token asd...asd \
   --state-file /tmp/some-file.json \
@@ -146,6 +147,7 @@ Options:
   -p, --projects <projects>                                     Bitbucket Server projects. Example: PROJ_1,PROJ_2,PROJ_3
   -rs, --repository-slug <rs>
   -prid, --pull-request <prid>
+  -prtf, --pull-request-title-filter <id>                       Only include pull requests with title matching this regexp. (default: ".*")
   -prcid, --pull-request-comment-id <id>
   -prcv, --pull-request-comment-version <version>
   -sf, --state-file <filename>                                  File to read, and write, state to.
@@ -156,7 +158,7 @@ Options:
   --log-level <level>                                           Log level DEBUG, INFO or ERROR (default: "INFO")
   -s, --sleep-time <milliseconds>                               Milliseconds to sleep between HTTP requests. (default: "300")
   -dr, --dry-run                                                Dry run, no POST/PUT/DELETE requests. (default: false)
-  -ias, --ignore-authors-slug <authors>                         Ignore authors by slug. Example: abc,def,fgh
+  -ias, --ignore-authors-slug <authors>                         Ignore authors by slug. Example: abc,def,fgh (default: [])
   -gs, --gather-state                                           Gather state from Bitbucket Server and store it in a file.
   -fc, --format-string                                          Format a string by rendering a Handlebars-template with the state as
                                                                 context.

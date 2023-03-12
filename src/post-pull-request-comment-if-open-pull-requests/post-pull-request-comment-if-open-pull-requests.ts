@@ -35,7 +35,8 @@ export default async function postPullRequestCommentIfOpenPullRequests(
           const pullRequests = pullRequestsToReviewBy(
             authorPullRequest.author.slug,
             state,
-            options.ignoreAuthorsSlug
+            options.ignoreAuthorsSlug,
+            options.pullRequestTitleFilter
           );
           if (pullRequests.length > 0) {
             log(
@@ -80,12 +81,14 @@ export default async function postPullRequestCommentIfOpenPullRequests(
 function pullRequestsToReviewBy(
   authorSlug: string,
   state: BitbucketServerState,
-  ignoreAuthorsSlug: string[]
+  ignoreAuthorsSlug: string[],
+  pullRequestTitleFilter: string
 ): PullRequest[] {
   return Object.values(state.repositories)
     .flatMap((it) => it.pullRequests)
     .filter((it) => it.author.slug != authorSlug)
     .filter((it) => ignoreAuthorsSlug.indexOf(it.author.slug) == -1)
+    .filter((it) => it.title.match(pullRequestTitleFilter))
     .filter((it) =>
       it.reviewers.find(
         (reviewer) =>
