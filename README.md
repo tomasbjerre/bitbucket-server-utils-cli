@@ -126,7 +126,7 @@ END
 )
 npx bitbucket-server-utils-cli \
   --post-pull-request-comment-if-open-pull-requests \
-  --pull-request-title-filter ^\(?\!WIP:\).*
+  --pull-request-title-filter ^\(?\!WIP:\).* \
   --url http://localhost:8080/rest/api/latest \
   --access-token asd...asd \
   --state-file /tmp/some-file.json \
